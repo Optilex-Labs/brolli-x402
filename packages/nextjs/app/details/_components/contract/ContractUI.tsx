@@ -71,28 +71,15 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
         </div>
         {/* Right Container - Patent Images and License Viewer */}
         <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
-          {/* Top: Patent License Minter Images (no text) */}
+          {/* Top: Patent License Minter Images */}
           <div className="bg-base-200 p-6 rounded-xl border-2 border-primary">
             <div className="flex flex-col items-center space-y-4">
-              <Image
-                src="/patent-name.png"
-                width="300"
-                height="300"
-                alt="Patent Name"
-                className="rounded-lg border-2 border-base-300"
-              />
-              <Image
-                src="/patent-abstract.png"
-                width="300"
-                height="200"
-                alt="Patent Abstract"
-                className="rounded-lg border-2 border-base-300"
-              />
+            
+              <LicenseViewer />
             </div>
           </div>
 
-          {/* Bottom: License Viewer */}
-          <LicenseViewer />
+          
         </div>
       </div>
     </div>

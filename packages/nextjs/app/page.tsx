@@ -149,67 +149,49 @@ const BrolliLicensePage: NextPage = () => {
                 ? "Minting..."
                 : Boolean(hasExistingLicense)
                   ? "You already own Brolli"
-                  : "FREE MINT"
+                  : "Mint a Free Brolli NFT"
               }
             </button>
         </div>
       </div>
     </div>
 
-    <div className="flex items-center flex-col flex-grow pt-10">
-      <div className="px-5">
-        <div className="flex flex-col lg:flex-row gap-8 justify-center items-start max-w-7xl mx-auto">
-          {/* Left Container - Existing Minter */}
-          <div className="flex-1 bg-base-200 p-6 rounded-xl border-2 border-primary">
-            <h2 className="text-2xl font-bold text-center mb-4">Brolli NFT Minter</h2>
-            <div className="flex flex-col items-center space-y-4">
-              <Image
-                src="/patent-name.png"
-                width="300"
-                height="300"
-                alt="Patent Name"
-                className="rounded-lg border-2 border-base-300"
-              />
-              <Image
-                src="/patent-abstract.png"
-                width="300"
-                height="200"
-                alt="Patent Abstract"
-                className="rounded-lg border-2 border-base-300"
-              />
-              <p className="text-center text-sm text-base-content/70">
-                IP Cover for BUIDLers of Decentralized Systems
-              </p>
-            </div>
-          </div>
+ <div className="flex flex-col items-center justify-center flex-grow pt-10 px-5">
+  <div className="w-full max-w-3xl bg-base-200 p-6 rounded-xl border-2 border-primary flex flex-col items-center space-y-6">
+    
+    <h2 className="text-2xl font-bold text-center">Brolli NFT Minter</h2>
+    
+    <p className="text-center text-lg text-base-content/70">
+      Dynamic data compliance controls at the highest directives and standards 
+      applicable with a net-sum formula as a zero-knowledge proof compliance 
+      validation key
+    </p>
+    
+    <Link href="/details" className="btn btn-primary btn-lg">
+      View NFT Details
+    </Link>
+    
+    <button 
+      onClick={handleMint} 
+      className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
+      disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+    >
+      {isSubmitting 
+        ? "Minting..." 
+        : Boolean(hasExistingLicense)
+          ? "NFT Already Owned"
+          : "Mint Brolli"
+      }
+    </button>
+    
+    {Boolean(hasExistingLicense) && (
+      <p className="text-sm text-warning text-center">
+        You already own a Brolli NFT!
+      </p>
+    )}
+  </div>
+</div>
 
-          {/* Right Container - NFT Actions */}
-          <div className="flex-1 bg-base-100 p-6 rounded-xl border-2 border-primary flex flex-col items-center justify-center gap-4">
-            <Link href="/details" className="btn btn-primary btn-lg">
-              View NFT Details
-            </Link>
-            
-            <button 
-              onClick={handleMint} 
-              className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
-              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
-            >
-              {isSubmitting 
-                ? "Minting..." 
-                : Boolean(hasExistingLicense)
-                  ? "NFT Already Owned"
-                  : "Mint NFT"
-              }
-            </button>
-            {Boolean(hasExistingLicense) && (
-              <p className="text-sm text-warning text-center">
-                You already own a Brolli NFT!
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
 
     {/* Enhanced Content Section After Minter */}
     <div className="flex items-center flex-col flex-grow pt-16">
