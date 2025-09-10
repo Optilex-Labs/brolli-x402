@@ -371,7 +371,7 @@ const BrolliLicensePage: NextPage = () => {
               ? "Minting..."
               : Boolean(hasExistingLicense)
                 ? "You already own Brolli"
-                : "FREE MINT"
+                : "Get Your Brolli NFT"
             }
           </button>
         </div>
