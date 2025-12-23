@@ -19,6 +19,10 @@ export const Footer = () => {
         <Link href="/terms" className="link">
           Terms
         </Link>
+````````<a href="https://github.com/martianina/brolli" target="_blank" rel="noopener noreferrer" className="link">
+          GitHub
+        </a>
+      
       </div>
             
     </div>
