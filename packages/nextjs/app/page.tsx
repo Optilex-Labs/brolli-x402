@@ -375,9 +375,9 @@ const BrolliLicensePage: NextPage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+            <div className="bg-base-300 p-6 rounded-2xl text-center shadow-lg border border-neutral">
               <div className="flex flex-col items-center mb-4">
-                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-base-content/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <div className="text-3xl font-bold text-secondary">PROVENANCE</div>
@@ -385,9 +385,9 @@ const BrolliLicensePage: NextPage = () => {
 
               <p className="text-sm text-base-content">Legal affidavit notarized and stored on-chain for maximum credibility.</p>
             </div>
-            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+            <div className="bg-base-300 p-6 rounded-2xl text-center shadow-lg border border-neutral">
               <div className="flex flex-col items-center mb-4">
-                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-base-content/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 <div className="text-3xl font-bold text-secondary">PROOF</div>
@@ -395,9 +395,9 @@ const BrolliLicensePage: NextPage = () => {
 
               <p className="text-sm text-base-content">Portable proof of coverage that travels with your project.</p>
             </div>
-            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+            <div className="bg-base-300 p-6 rounded-2xl text-center shadow-lg border border-neutral">
               <div className="flex flex-col items-center mb-4">
-                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-base-content/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
                 </svg>
                 <div className="text-3xl font-bold text-secondary">VALIDATION</div>
