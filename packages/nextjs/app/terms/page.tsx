@@ -5,82 +5,123 @@ const TermsOfService: React.FC = () => {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="bg-base-100 rounded-lg shadow-lg p-8">
         <h1 className="text-3xl font-bold text-center mb-4 text-primary">
-          Brolli NFT Terms of Service
+          Brolli License Terms
         </h1>
 
         <div className="mb-6 text-center text-base-content/70">
-          <p className="text-lg font-medium">Brolli for Solana Seeker v.1.0</p>
-          <p className="text-sm">Effective Date: September 1, 2025</p>
+          <p className="text-lg font-medium">Brolli for BUIDLers v.1.1</p>
+          <p className="text-sm">Effective Date: December 20, 2025</p>
         </div>
 
         <div className="space-y-6 text-base-content">
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              1. NFT Grant & Use
+              1. License Grant & Proof
             </h2>
             <p>
-              You receive a free Brolli NFT ("NFT") for participation. The NFT is solely a representation of IP licensing rights as described in its provenance package. You may hold, display, or transfer the NFT. Ownership does not create any other rights, implied or express, beyond those explicitly stated in the provenance package.
+              Brolli is a Web3 licensing product. Holding a Brolli soulbound NFT in your wallet is intended to serve as
+              cryptographic proof that you have been granted a license, subject to these Terms and the provenance package
+              referenced by the NFT metadata.
+            </p>
+            <p className="mt-3">
+              Your license is <strong>time-limited</strong>. Unless otherwise stated in the provenance package, the license
+              term is <strong>one (1) year</strong> from purchase/renewal and may be renewable.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              2. No Warranties
+              2. Term, Renewal, and Non-Transferability
             </h2>
             <p>
-              The NFT is provided "as-is." We make no warranties regarding merchantability, fitness for a particular purpose, or non-infringement. We disclaim all liability except as explicitly represented in the provenance package.
+              The Brolli NFT is designed to be non-transferable (soulbound). The license is associated with the wallet that
+              holds the Brolli NFT and is subject to on-chain expiry. Renewal extends the license term; renewal does not
+              necessarily mint a new NFT.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              3. No Legal Advice
+              3. Payments (x402 / USDC on Base)
             </h2>
             <p>
-              Interacting with the NFT does not constitute legal, financial, or tax advice. You are responsible for evaluating how the NFT fits your own compliance, business, or investment needs.
+              Access to purchase/renewal may be gated using the x402 (HTTP 402) protocol. Payments are intended to be made in
+              USDC on Base networks (e.g., Base Sepolia for testing and Base mainnet for production), as configured at the
+              time of purchase.
+            </p>
+            <p className="mt-3">
+              Blockchain transactions are generally irreversible. Refunds, chargebacks, and cancellations (if any) are
+              governed by a separate written agreement or published refund policy.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              4. Risks
+              4. Provenance Package Controls
             </h2>
             <p>
-              NFTs are digital assets stored on a blockchain, subject to network and market risks. Wallet addresses, token transfers, and blockchain activity are publicly visible. You assume all risk for private key management, wallet security, and interaction with the blockchain.
+              The provenance package referenced in the NFT metadata (for example, an IPFS-hosted document bundle) describes
+              key license details and may include additional terms or scope limitations. In the event of inconsistency,
+              interpret these Terms and the provenance package together as a single agreement, with the provenance package
+              controlling on technical identifiers and referenced materials.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              5. Limitations of Liability
+              5. Assignment
             </h2>
             <p>
-              To the maximum extent permitted by law, we are not liable for any loss, damages, or costs arising from your use or inability to use the NFT or the Service, including but not limited to technical failures, blockchain network errors, loss of value or opportunity, or indirect, incidental, or consequential damages.
+              Licensor may assign the subject patent and/or this agreement to an affiliated or successor entity without licensee consent.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              6. Governing Law
+              6. No Warranties / No Legal Advice
             </h2>
             <p>
-              These TOS are governed by the laws of [Insert State], without regard to conflict-of-law principles. Any disputes must be resolved in the courts of that jurisdiction.
+              The Service is provided \"as-is\" and \"as available.\" Nothing in the Service or NFT metadata constitutes legal,
+              financial, or tax advice. You should consult your own advisors for your specific situation.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              7. Miscellaneous
+              7. Risks and Blockchain Transparency
             </h2>
             <p>
-              These TOS constitute the entire agreement regarding the NFT. If any provision is invalid, the remaining provisions remain in effect. By claiming the NFT, you acknowledge you understand these terms.
+              Wallet addresses and on-chain activity are publicly visible. You are responsible for wallet security, private-key
+              management, gas fees, and any consequences of interacting with smart contracts and third-party tooling.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-3 text-secondary">
+              8. Limitations of Liability
+            </h2>
+            <p>
+              To the maximum extent permitted by law, we are not liable for any indirect, incidental, special, consequential,
+              or punitive damages, or any loss of profits, revenues, data, or goodwill, arising out of or related to your use
+              of the Service.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-3 text-secondary">
+              9. Governing Law and Venue
+            </h2>
+            <p>
+              These Terms are governed by the laws of <strong>[Insert Jurisdiction]</strong>, without regard to conflict-of-law
+              principles. Any disputes must be resolved in the courts of that jurisdiction.
             </p>
           </section>
         </div>
 
         <div className="mt-8 pt-6 border-t border-base-300 text-center">
           <p className="text-sm text-base-content/60">
-            Please read these terms carefully before interacting with Brolli NFTs. Your participation constitutes acceptance of these terms.
+            Please read these Terms carefully before purchasing or renewing a Brolli license. Your use constitutes acceptance
+            of these Terms.
           </p>
         </div>
       </div>

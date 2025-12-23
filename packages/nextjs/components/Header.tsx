@@ -16,12 +16,17 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   
-  
   {
     label: "Brolli NFT Details",
     href: "/details",
     
   },
+  {
+    label: "For Agents & Teams",
+    href: "/agents",
+    
+  },
+  
 ];
 
 export const HeaderMenuLinks = () => {
@@ -38,20 +43,20 @@ export const HeaderMenuLinks = () => {
               passHref
               className={`py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col shadow-md hover:shadow-lg transition-all duration-200`}
               style={{
-                backgroundColor: isActive ? 'transparent' : '#6A5ACD',
-                borderColor: '#6A5ACD',
-                border: '1px solid #6A5ACD',
-                color: isActive ? '#6A5ACD' : 'white'
+                backgroundColor: isActive ? 'transparent' : '#F97316',
+                borderColor: '#F97316',
+                border: '1px solid #F97316',
+                color: isActive ? '#F97316' : 'white'
               }}
               onMouseEnter={(e) => {
                 if (!isActive) {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#6A5ACD';
+                  e.currentTarget.style.color = '#F97316';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isActive) {
-                  e.currentTarget.style.backgroundColor = '#6A5ACD';
+                  e.currentTarget.style.backgroundColor = '#F97316';
                   e.currentTarget.style.color = 'white';
                 }
               }}
@@ -108,7 +113,7 @@ export const Header = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Brolli</span>
-            <span className="text-xs">BUIDLer Cover</span>
+            <span className="text-xs">IP Protection for Fintech BUIDLers & Innovators</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">

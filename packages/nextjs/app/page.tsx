@@ -3,9 +3,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
-import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth/networks";
+import { BrolliChatWidget } from "~~/components/brolli-chat/brolli-chat-widget";
+import { BrolliFaq } from "~~/components/brolli-faq/brolli-faq";
+import { PromoBanner } from "~~/components/promo-banner";
 
 interface LicenseFormState {
   name: string;
@@ -22,13 +27,20 @@ const initialState: LicenseFormState = {
   provenanceCid: PROVENANCE_LINK,
 };
 
+const RESOURCE_WALLET = "0xbDa36A47a41Fe693CC55316f58146dA556FDEFf3";
+const REQUIRED_USDC_AMOUNT = BigInt("1000000"); // $1 USDC (6 decimals)
+
 const BrolliLicensePage: NextPage = () => {
   const { address: connectedAddress } = useAccount();
+  const router = useRouter();
+  const { targetNetwork } = useTargetNetwork();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState<LicenseFormState>(initialState);
 
   const [yourLicenses, setYourLicenses] = useState<any[]>();
   const [loading, setLoading] = useState(true);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const { data: balance } = useScaffoldReadContract({
     contractName: "Brolli",
@@ -45,7 +57,8 @@ const BrolliLicensePage: NextPage = () => {
   } as any);
 
   const { data: contract } = useScaffoldContract({ contractName: "Brolli" });
-  const { writeContractAsync } = useScaffoldWriteContract("Brolli");
+  const { writeContractAsync: writeBrolliAsync } = useScaffoldWriteContract("Brolli");
+  const { writeContractAsync: writeUsdcAsync } = useScaffoldWriteContract("USDC");
 
   function update<K extends keyof LicenseFormState>(key: K, value: LicenseFormState[K]) {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -82,17 +95,49 @@ const BrolliLicensePage: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [balance, connectedAddress, Boolean(contract)]);
 
-  async function handleMint() {
-    if (!contract || !connectedAddress) return;
+  function handleMint() {
+    if (!connectedAddress) {
+      alert("Please connect your wallet first.");
+      return;
+    }
+    setShowTermsModal(true);
+  }
+
+  async function handlePurchase() {
+    if (!connectedAddress || !acceptedTerms) {
+      alert("Please accept terms and conditions.");
+      return;
+    }
+
+    if (!contract?.address) {
+      alert("Contract not loaded. Please refresh the page.");
+      return;
+    }
+
+    setShowTermsModal(false);
     setIsSubmitting(true);
+
     try {
-      await writeContractAsync({
-        functionName: "mint",
-        args: [form.name, form.imageUri, form.provenanceCid],
+      // Step 1: Approve Brolli contract to spend USDC (following Vendor.sol pattern)
+      console.log("Approving USDC for Brolli contract...");
+      await writeUsdcAsync({
+        functionName: "approve",
+        args: [contract.address, REQUIRED_USDC_AMOUNT],
       });
+
+      // Step 2: Mint NFT (contract will pull USDC payment)
+      console.log("Minting NFT...");
+      await writeBrolliAsync({
+        functionName: "mint",
+        args: ["", form.imageUri, form.provenanceCid],
+      });
+
       setForm(initialState);
+      setAcceptedTerms(false);
+      alert("License purchased successfully!");
     } catch (e) {
       console.error(e);
+      alert(e instanceof Error ? e.message : "Purchase failed. Check console for details.");
     } finally {
       setIsSubmitting(false);
     }
@@ -106,6 +151,7 @@ const BrolliLicensePage: NextPage = () => {
 
   return (
     <>
+    <PromoBanner />
     {/* Hero Section with Video Background and Logo Overlay */}
     <div className="relative h-[110vh] w-full overflow-hidden">
       {/* Background Video */}
@@ -131,28 +177,65 @@ const BrolliLicensePage: NextPage = () => {
               alt="Brolli for BUIDLers"
               width={1200}
               height={1200}
-              className="mx-auto -mb-2 drop-shadow-2xl"
+              className="mx-auto drop-shadow-2xl"
             />
+
+            <p className="text-xl md:text-2xl text-white font-medium mt-6 mb-8 drop-shadow-lg">
+              Tokenized IP protection for fintech innovators
+            </p>
 
             {/* CTA Button */}
             <button
               onClick={handleMint}
               className="btn px-8 py-3 text-lg font-semibold"
               style={{
-                backgroundColor: '#6A5ACD',
-                borderColor: '#6A5ACD',
+                backgroundColor: '#F97316',
+                borderColor: '#F97316',
                 color: 'white'
               }}
-              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+              disabled={isSubmitting || Boolean(hasExistingLicense)}
             >
               {isSubmitting
-                ? "Minting..."
+                ? "Processing Purchase..."
                 : Boolean(hasExistingLicense)
                   ? "You already own Brolli"
-                  : "Mint a Free Brolli NFT"
+                  : !connectedAddress
+                    ? "Connect Wallet to Purchase"
+                    : "Purchase License - $99"
               }
             </button>
+            {!hasExistingLicense && (
+              <p className="mt-3 text-sm text-white/90 font-medium">
+                Limited time: 50 seats available
+              </p>
+            )}
         </div>
+      </div>
+    </div>
+
+    {/* Promotional Details Section */}
+    <div className="bg-gradient-to-r from-orange-500 to-pink-500 py-12 px-5">
+      <div className="max-w-4xl mx-auto text-center text-white">
+        <h2 className="text-4xl font-bold mb-6">Holiday Hacker Special</h2>
+        <div className="grid md:grid-cols-2 gap-8 mb-6 max-w-2xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <div className="mb-2">
+              <span className="text-3xl font-bold line-through opacity-70">$199</span>
+              <span className="text-5xl font-bold ml-3">$99</span>
+            </div>
+            <div className="text-xl mb-2">Holiday Special</div>
+            <div className="text-sm opacity-90">50% OFF • Ends Jan 9, 2026</div>
+            <div className="text-xs opacity-75 mt-2">Regular price: $199 (starting Jan 10)</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <div className="text-5xl font-bold mb-2">50</div>
+            <div className="text-xl mb-2">Total Supply</div>
+            <div className="text-sm opacity-90">Soulbound • One per Wallet</div>
+          </div>
+        </div>
+        <p className="text-lg opacity-95">
+          Are you hacking on innovative fintech, real world asset, stablecoin or crypto apps this season? This special is for you!
+        </p>
       </div>
     </div>
 
@@ -162,35 +245,50 @@ const BrolliLicensePage: NextPage = () => {
     <h2 className="text-2xl font-bold text-center">Brolli NFT Minter</h2>
     
     <p className="text-center text-lg text-base-content/70">
-      Dynamic data compliance controls at the highest directives and standards 
-      applicable with a net-sum formula as a zero-knowledge proof compliance 
-      validation key
+      Patent License: Zero-Knowledge Compliance Infrastructure for Real-World Asset Finance
     </p>
     
-    <Link href="/details" className="btn btn-primary btn-lg">
-      View NFT Details
+    <Link 
+      href="/details" 
+      className="btn btn-lg"
+      style={{
+        backgroundColor: '#F97316',
+        borderColor: '#F97316',
+        color: 'white'
+      }}
+    >
+      View Brolli NFT Details
     </Link>
     
     <button 
       onClick={handleMint} 
-      className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
-      disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+      className="text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
+      style={{
+        backgroundColor: '#F97316',
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EA580C'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F97316'}
+      disabled={isSubmitting || Boolean(hasExistingLicense)}
     >
       {isSubmitting 
-        ? "Minting..." 
+        ? "Processing Purchase..." 
         : Boolean(hasExistingLicense)
-          ? "NFT Already Owned"
-          : "Mint Brolli"
+          ? "License active"
+          : !connectedAddress
+            ? "Connect Wallet to Purchase"
+            : "Purchase License - $99"
       }
     </button>
     
     {Boolean(hasExistingLicense) && (
       <p className="text-sm text-warning text-center">
-        You already own a Brolli NFT!
+        You already own Brolli!
       </p>
     )}
   </div>
 </div>
+
+    <BrolliFaq />
 
 
     {/* Enhanced Content Section After Minter */}
@@ -321,57 +419,26 @@ const BrolliLicensePage: NextPage = () => {
           />
         </div>
 
-        {/* Value Proposition */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="flex flex-col items-center mb-4">
-              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              <div className="text-3xl mb-3 font-bold text-secondary">BUILDers</div>
-            </div>
-
-            <p className="text-sm text-secondary">Focus on innovation, not IP trolls.</p>
-          </div>
-                    <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="flex flex-col items-center mb-4">
-              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              <div className="text-3xl mb-3 font-bold text-secondary">ENTERPRISE</div>
-            </div>
-
-            <p className="text-sm text-secondary">Clear licensing path for web3 adoption and ecosystem growth.</p>
-          </div>
-          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="flex flex-col items-center mb-4">
-              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <div className="text-3xl mb-3 font-bold text-secondary">ECOSYSTEM</div>
-            </div>
-
-            <p className="text-sm text-secondary">Expand regulated use cases. Collective protection benefits all.</p>
-          </div>
-        </div>
-
-        {/* Duplicated FREE MINT Button */}
+        
+        {/* Duplicated  MINT Button */}
         <div className="text-center my-8">
           <button
             onClick={handleMint}
             className="btn px-8 py-3 text-lg font-semibold"
             style={{
-              backgroundColor: '#6A5ACD',
-              borderColor: '#6A5ACD',
+              backgroundColor: '#F97316',
+              borderColor: '#F97316',
               color: 'white'
             }}
-            disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+            disabled={isSubmitting || Boolean(hasExistingLicense)}
           >
             {isSubmitting
-              ? "Minting..."
+              ? "Processing Purchase..."
               : Boolean(hasExistingLicense)
                 ? "You already own Brolli"
-                : "Get Your Brolli NFT"
+                : !connectedAddress
+                  ? "Connect Wallet to Purchase"
+                  : "Purchase License - $99"
             }
           </button>
         </div>
@@ -397,7 +464,7 @@ const BrolliLicensePage: NextPage = () => {
                   {yourLicenses.map(license => {
                     return (
                         <div key={license.id} className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl shadow-lg border border-neutral">
-                        <h2 className="text-xl font-bold">{license.name}</h2>
+                        <h2 className="text-xl font-bold"></h2>
                         {license.image && renderImage(license.image, license.name)}
                         <p className="mt-2 text-sm">{license.description}</p>
 
@@ -418,12 +485,12 @@ const BrolliLicensePage: NextPage = () => {
                         {/* Block Explorer Links */}
                         <div className="mt-4 w-full">
                           <a
-                            href={`https://sepolia.etherscan.io/address/${contract?.address}`}
+                            href={contract?.address ? getBlockExplorerAddressLink(targetNetwork as any, contract.address) : "#"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-xs btn-outline btn-primary"
                           >
-                            View on Etherscan
+                            View Contract
                           </a>
                         </div>
                       </div>
@@ -436,6 +503,65 @@ const BrolliLicensePage: NextPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Purchase Confirmation Modal */}
+      {showTermsModal && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <div className="bg-base-100 rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <h3 className="text-2xl font-bold mb-4">Purchase License - $1 USDC</h3>
+
+            {/* Terms Acceptance */}
+            <div className="mb-6">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={acceptedTerms}
+                  onChange={(e) => setAcceptedTerms(e.target.checked)}
+                  className="mt-1 w-5 h-5 rounded accent-[#F97316]"
+                />
+                <span className="text-sm">
+                  I accept the{" "}
+                  <Link href="/terms" className="underline text-[#F97316]" target="_blank">
+                    Terms & Conditions
+                  </Link>
+                  {" "}and{" "}
+                  <Link href="/privacy-policy" className="underline text-[#F97316]" target="_blank">
+                    Privacy Policy
+                  </Link>
+                </span>
+              </label>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                onClick={handlePurchase}
+                disabled={!acceptedTerms || isSubmitting}
+                className="btn w-full"
+                style={{
+                  backgroundColor: '#F97316',
+                  borderColor: '#F97316',
+                  color: 'white',
+                  opacity: (!acceptedTerms || isSubmitting) ? 0.5 : 1
+                }}
+              >
+                {isSubmitting ? "Processing..." : "Purchase License"}
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowTermsModal(false);
+                  setAcceptedTerms(false);
+                }}
+                className="btn w-full"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <BrolliChatWidget />
     </>
   );
 };

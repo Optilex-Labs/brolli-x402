@@ -9,7 +9,7 @@ const PrivacyPolicy: React.FC = () => {
         </h1>
 
         <div className="mb-6 text-center text-sm text-base-content/70">
-          Effective Date: September 1, 2025
+          Effective Date: December 20, 2025
         </div>
 
         <div className="space-y-6 text-base-content">
@@ -27,7 +27,7 @@ const PrivacyPolicy: React.FC = () => {
               2. Information We Collect
             </h2>
             <p>
-              We only collect your wallet address when you interact with our platform, including minting NFTs or claiming licenses. We do not collect personal identifiers such as name, email, phone number, or payment details unless you voluntarily provide them in optional communications.
+              We collect your wallet address and on-chain transaction data that is publicly available when you interact with the Service (e.g., purchasing/renewing a license, minting, or viewing contract data). We do not collect personal identifiers such as name, email, phone number, or payment card/bank details unless you voluntarily provide them in optional communications.
             </p>
           </section>
 
@@ -45,7 +45,7 @@ const PrivacyPolicy: React.FC = () => {
               4. Smart Contracts & Blockchain Transparency
             </h2>
             <p>
-              All NFTs and transactions are recorded on public blockchains (Solana, testnet/mainnet). Wallet addresses interacting with the smart contract are visible on-chain. By using the platform, you acknowledge this transparency.
+              All NFTs and transactions are recorded on public blockchains (including Base networks for testnet/mainnet). Wallet addresses interacting with the smart contract are visible on-chain. By using the platform, you acknowledge this transparency.
             </p>
           </section>
 
@@ -54,7 +54,7 @@ const PrivacyPolicy: React.FC = () => {
               5. Third-Party Services
             </h2>
             <p>
-              We may use third-party services for blockchain infrastructure, token-gating, or NFT minting. These third parties may have access to your wallet address only to the extent necessary to provide the service. We require these third parties to handle your information responsibly.
+              We may use third-party services for blockchain infrastructure (RPC providers), wallet connection tooling, and payment-gated access (e.g., x402 facilitators and related Coinbase tooling). These third parties may process wallet addresses and request metadata only to the extent necessary to provide the service. We require these third parties to handle information responsibly, but their practices are governed by their own policies.
             </p>
           </section>
 

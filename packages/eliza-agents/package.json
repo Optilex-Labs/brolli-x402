@@ -1,0 +1,9 @@
+{
+  "name": "@brolli/eliza-agents",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "validate:sales-agent": "node scripts/validate-sales-agent.mjs"
+  }
+}

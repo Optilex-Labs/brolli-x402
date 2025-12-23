@@ -1,0 +1,58 @@
+{
+  "patentId": "US12095919B2",
+  "source": "Curated local excerpt (from user-provided text / PDF excerpt).",
+  "snippets": [
+    {
+      "snippetId": "meta-001",
+      "pageOrSection": "Metadata",
+      "text": "US 12,095,919 B2 — “Dynamic Data Compliance Controls at the Highest Directives and Standards Applicable with a Net‑Sum Formula as a Zero‑Knowledge Proof Compliance Validation Key”. Inventor: David Stefanich. Applicant/Assignee: Rymedi, Inc. Filed Nov. 24, 2021. Patent date Sep. 17, 2024."
+    },
+    {
+      "snippetId": "abs-001",
+      "pageOrSection": "Abstract",
+      "text": "A software mechanism for controlling data use in compliance with applicable legal standards and directives via a symbolic instruction set that additionally creates a mathematical net-sum to provide a data compliance validation key for use of that data in software, firmware and hardware."
+    },
+    {
+      "snippetId": "abs-002",
+      "pageOrSection": "Abstract (continued)",
+      "text": "In some embodiments, the software mechanism identifies and tags via a symbolic instruction set the standards and directives applicable to data elements as a result of laws, technical and industry standards, contractual obligations, and other sources of norms, in order to streamline data compliance in forthcoming uses of that data."
+    },
+    {
+      "snippetId": "abs-003",
+      "pageOrSection": "Abstract (continued)",
+      "text": "In other embodiments, a symbolic instruction set creates compliance-validation keys utilizing a net-sum method across applicable data norms to provide cryptographic zero-knowledge proof of the compliance of such data for software, firmware and hardware uses."
+    },
+    {
+      "snippetId": "field-001",
+      "pageOrSection": "Technical Field",
+      "text": "The present disclosure is directed, in general, to a software mechanism for controlling data use in compliance with applicable legal standards and directives via a symbolic instruction set that additionally creates a mathematical net-sum to provide a data compliance validation key for use of that data in software, firmware and hardware."
+    },
+    {
+      "snippetId": "bg-001",
+      "pageOrSection": "Background",
+      "text": "Today's information and data governance is applied in a linear fashion… treating data as a static object or element in time. In emerging information societies… data have different states as a result of changing relations to other data, contexts of use, and pre-existing web of rights and permissions…"
+    },
+    {
+      "snippetId": "sum-001",
+      "pageOrSection": "Summary",
+      "text": "In some embodiments, a software mechanism identifies and tags via a symbolic instruction set the standards and directives applicable to data elements as a result of laws, technical and industry standards, contractual obligations, and other sources of norms, in order to streamline data compliance in forthcoming uses of that data."
+    },
+    {
+      "snippetId": "sum-002",
+      "pageOrSection": "Summary (continued)",
+      "text": "In other embodiments, a symbolic instruction set creates compliance-validation keys utilizing a net-sum method across applicable data norms to provide cryptographic zero-knowledge proof of the compliance of such data for software, firmware and hardware uses."
+    },
+    {
+      "snippetId": "fig2-steps-001",
+      "pageOrSection": "Detailed Description (FIG. 2 steps; condensed)",
+      "text": "FIG. 2 describes steps including: step 1 jurisdiction identification for a data element; step 2 determine applicable standards/directives; step 3 operationalize best-practice controls; step 4 enrichment with relational/contextual info; step 5 dynamic tagging (public baseline metadata to tailored private metadata); step 6 abstraction of governing constraints and conflict management; step 7 apply controls to actions; step 8 key management; step 9 modify data element for compliant use; step 10 net-sum formula to provide a zero-knowledge proof compliance validation key."
+    },
+    {
+      "snippetId": "claim1-001",
+      "pageOrSection": "Claim 1 (excerpt)",
+      "text": "A method for managing use of data in compliance with data protection standards, comprising storing information about one or more data protection standards… receiving a first data element… analyzing the first data element to determine a first set of static properties… determining governing data protection standards… storing the first data element where access is managed according to associated access controls… distributing an access key…"
+    }
+  ]
+}
+
+

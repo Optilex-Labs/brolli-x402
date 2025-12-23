@@ -17,7 +17,7 @@ const LICENSE_DETAILS = {
     "Community-driven IP protection",
   ],
   terms: {
-    duration: "Perpetual",
+    duration: "1 year (renewable)",
     territory: "Worldwide",
     field:
       "Decentralized Systems, Zero Knowledge Proofs, and Real World Evidence",

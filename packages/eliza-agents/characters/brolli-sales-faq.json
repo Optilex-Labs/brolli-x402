@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "defaults": {
+    "disclaimer": "Not legal advice. For legal questions, consult qualified counsel.",
+    "noLinksPolicy": "Do not include any URLs or external links in responses."
+  },
+  "topics": [
+    {
+      "id": "what_is_brolli",
+      "title": "What is Brolli?",
+      "keywords": ["what is brolli", "what is this", "what do i get", "license nft", "soulbound", "non-transferable", "proof of coverage", "provenance"],
+      "answer": "Brolli is a 1-year renewable patent license delivered as a soulbound NFT.\n\nIt's meant to be a simple, checkable proof that a specific wallet address holds the license.\n\nConstraints:\n- One per wallet\n- Team purchases require one wallet per seat\n- Total supply capped at 50\n- Price is $99 during the promotion"
+    },
+    {
+      "id": "what_you_get",
+      "title": "What do I actually get when I buy?",
+      "keywords": ["what do i get", "purchase", "buy", "receive", "nft metadata"],
+      "answer": "A soulbound license NFT minted to your wallet, plus a provenance reference (IPFS) that points to the patent + terms bundle, and an on-chain expiry timestamp."
+    },
+    {
+      "id": "team_licenses",
+      "title": "Can my team buy multiple licenses?",
+      "keywords": ["team", "multiple", "team purchase", "multiple wallets", "seats"],
+      "answer": "Yes—one per wallet. Practical workflow: collect wallet addresses and buy one license per address."
+    },
+    {
+      "id": "transferable",
+      "title": "Is it transferable?",
+      "keywords": ["transfer", "transferable", "sell", "trade", "soulbound"],
+      "answer": "No. It's soulbound (non-transferable) by design."
+    },
+    {
+      "id": "investor_diligence",
+      "title": "What should we show investors in diligence?",
+      "keywords": ["investors", "diligence", "due diligence", "proof", "verify"],
+      "answer": "The wallet holding the NFT, the on-chain expiry timestamp, and the provenance reference in the NFT metadata. It's designed to be quick to verify."
+    },
+    {
+      "id": "pricing",
+      "title": "How much does it cost?",
+      "keywords": ["price", "cost", "how much", "pricing", "$99", "$199", "holiday", "special", "discount"],
+      "answer": "Holiday Hacker Special: $99 (through January 9, 2026)\nRegular Price: $199 (starting January 10, 2026)\n\nThis is a limited-time 50% discount for early adopters. Only 50 licenses total will be issued. Each license is valid for one year and renewable."
+    },
+    {
+      "id": "what_is_a_buidler",
+      "title": "What is a BUIDLer?",
+      "keywords": ["buidler", "buidl", "what is a buidler", "builder", "hodl", "ship", "developers", "founders", "engineers", "infrastructure", "rwa", "defi", "fintech"],
+      "answer": "A BUIDLer is someone who actively builds real products and infrastructure in the blockchain ecosystem (not just speculation).\n\nIt's a play on the HODL meme: \"BUIDL\" means build. In practice: devs, founders, and engineers who ship code, deploy protocols, and solve real-world problems—often in fintech, DeFi, RWA, and infrastructure.\n\nBUIDLers care about functionality, compliance, scalability, and long-term utility."
+    },
+    
+    {
+      "id": "who_should_buy",
+      "title": "Who should buy it (company vs founders vs product wallet)?",
+      "keywords": ["who should buy", "company or founder", "which wallet", "product wallet", "entity wallet", "treasury", "ops wallet"],
+      "answer": "Buy for the wallet identity you want covered as proof (usually the company’s operational wallet).\n\nIf multiple people/agents need coverage, issue one per wallet."
+    },
+    {
+      "id": "term_and_renewal",
+      "title": "How long does Brolli last?",
+      "keywords": ["one year", "1 year", "term", "renew", "renewal", "expires", "expiry", "expiration", "valid until"],
+      "answer": "The license is time-limited and renewable.\n\nOn-chain it's represented as an expiry timestamp for the covered wallet. Renewals extend from the later of \"now\" or \"current expiry.\""
+    },
+    {
+      "id": "coverage_scope",
+      "title": "What included?",
+      "keywords": ["covered", "coverage", "scope", "what does this cover", "what is not covered", "guarantee", "won't be sued", "all ip"],
+      "answer": "Included: the specific license grant described in the provenance/terms.\n\nNot included: specific IP protection, litigation outcomes, or guarantees you won’t be sued."
+    },
+    {
+      "id": "agentic_commerce",
+      "title": "How does Brolli reduce agentic commerce risk?",
+      "keywords": ["agentic", "agents", "automation", "copilot", "autonomous", "workflow", "regulated", "compliance risk"],
+      "answer": "Agents can scale behavior fast; they also scale exposure fast.\n\nBrolli is positioned as a simple risk-reduction move for a specific category of IP tail risk while you iterate in regulated markets."
+    },
+    {
+      "id": "compliance_kya",
+      "title": "Does Brolli take care of my KYC/AML/sanctions compliance?",
+      "keywords": ["kyc", "aml", "sanctions", "ofac", "compliance", "regulated", "money transmitter", "msb"],
+      "answer": "No.\n\nThis product is an IP license. You still need your own compliance program and controls for your regulated activity."
+    },
+    {
+      "id": "dirty_ip",
+      "title": "What do you mean by Dirty IP risk?",
+      "keywords": ["dirty ip", "patent troll", "trolls", "litigation", "lawsuit", "sued", "ip risk", "enterprise patents", "portfolio", "blocking patents"],
+      "answer": "\"Dirty IP\" is the practical risk that broad patent claims and asymmetric enforcement can create for startups.\n\nThe existential problem usually isn't whether you're morally right; it's that litigation cost, uncertainty, and timing can cripple a young company right when it has traction.\n\nBrolli is positioned as umbrella protection while you build: reduce a category of tail risk cheaply so you can focus on shipping and distribution."
+    },
+    {
+      "id": "patent_strategy",
+      "title": "How does Brolli affect my IP strategy?",
+      "keywords": ["should i patent", "file a patent", "patent right away", "patent protection", "ip strategy", "defensive patent", "patent application"],
+      "answer": "It gives you time to decide without spending a fortune on legal fees.\n\nFor most early-stage teams, filing early often competes with runway and velocity. A patent is a strategy (and sometimes an enforcement tool), not a default badge.\n\nA practical approach is:\n- Keep shipping and learning what’s truly worth protecting\n- Reduce catastrophic tail risk cheaply (umbrella coverage)\n- Revisit a deeper IP strategy once you have traction, budget, and a clear reason to enforce"
+    },
+    {
+      "id": "business_process_patents",
+      "title": "Can you patent a business process?",
+      "keywords": ["business process patent", "patent a business process", "can you patent an idea", "patent a workflow", "method patent"],
+      "answer": "Sometimes, but it’s often a distraction for early-stage teams.\n\nBusiness process patents can be expensive, slow, and hard to enforce. Many startups end up spending time and money on IP work before they’ve proven distribution or product-market fit.\n\nIf you’re early-stage, optimize for shipping and derisking. Decide on a deeper IP strategy later when the business can support it."
+    },
+    {
+      "id": "real_world_example",
+      "title": "Real-world example of IP enforcement being crippling",
+      "keywords": ["real example", "example", "ross intelligence", "thomson reuters", "tr v ross", "westlaw", "lawsuit example"],
+      "answer": "One real-world example people cite is Thomson Reuters v. Ross Intelligence. Without taking a position on who was \"right,\" it illustrates a founder reality: IP disputes with giants will put you out of business.\n\nThat's the point of planning for tail risk early: you don't want a legal fight to become the thing that decides whether your product survives."
+    },
+    {
+      "id": "payment_status",
+      "title": "Payments (what’s supported)",
+      "keywords": ["pay", "payment", "usdc", "coinbase", "bitcoin", "ethereum", "solana", "x402"],
+      "answer": "We’ve integrated x402, first for USDC payments.\n\nWe will add support for BTC, ETH, and SOL."
+    },
+    {
+      "id": "refunds",
+      "title": "Do you offer refunds?",
+      "keywords": ["refund", "refunds", "chargeback", "cancel", "cancellation", "reverse", "reversible"],
+      "answer": "All sales are final.\n\nSee our Terms and Conditions for more information"
+    },
+    {
+      "id": "privacy",
+      "title": "What data do you collect?",
+      "keywords": ["privacy", "data", "collect", "tracking", "personal data", "pii"],
+      "answer": "Wallet address and public on-chain activity.\n\nAvoid sharing sensitive information in chat."
+    },
+    {
+      "id": "wallet_rotation",
+      "title": "What if we rotate wallets or lose keys?",
+      "keywords": ["lose wallet", "lost keys", "rotate wallet", "key rotation", "new wallet", "compromised"],
+      "answer": "Because the NFT is soulbound, wallet rotation is non-trivial.\n\nTreat the covered wallet as critical infrastructure and plan custody and key management accordingly."
+    },
+    {
+      "id": "unknown",
+      "title": "Unknown / out of scope",
+      "keywords": [],
+      "answer": "Let's clarify how I can help.\n\nWhat are you trying to decide?\n- Pricing / team purchase workflow\n- Coverage scope / diligence proof\n- Patent strategy / business process patents\n- Agentic commerce risk framing"
+    }
+  ]
+}
+
+

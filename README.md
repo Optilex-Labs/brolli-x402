@@ -1,143 +1,159 @@
-# 🚩 Challenge 7: 🎁 SVG NFT
+# 🌂 Brolli for BUIDLers
 
-![readme-7](https://github.com/scaffold-eth/se-2-challenges/assets/25638585/94178d41-f7ce-4d0f-af9a-488a224d301f)
+**Tokenized IP protection for fintech innovators**
 
-🎨 Creating on-chain SVG NFTs is an exciting way to leverage the power of smart contracts for generating unique digital art. This challenge will have you build a contract that generates dynamic SVG images directly on the blockchain. Users will be able to mint their own unique NFTs with customizable SVG graphics and metadata.
+Brolli provides soulbound, 1-year renewable patent license NFTs on Base, enabling developers and teams to demonstrate IP coverage for blockchain-based financial applications.
 
-🔗 Your contract will handle the creation and storage of the SVG code, ensuring each minted NFT is unique and stored entirely on-chain. This approach keeps the artwork decentralized and immutable.
-
-💎 The objective is to develop an app that allows users to mint their own dynamic SVG NFTs. Customize your SVG generation logic and make the minting process interactive and engaging.
-
-🚀 Once your project is live, share the minting URL so others can see and mint their unique SVG NFTs!
-
-🌟 Use Loogies NFT as an example to guide your project. This will provide a solid foundation and inspiration for creating your own dynamic SVG NFTs.
-
-> 💬 Meet other builders working on this challenge and get help in the [🎁 SVG NFT 🎫 Building Cohort](https://t.me/+mUeITJ5u7Ig0ZWJh)!
+**Live on Base Mainnet:** [`0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0`](https://basescan.org/address/0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0)
 
 ---
 
-## 📜 Quest Journal 🧭
+## 🎯 Problem / Solution
 
-This challenge is brimming with creative freedom, giving you the opportunity to explore various approaches!
+### The Problem
+- **10,000+ blockchain patents** have been issued in the U.S., with 85% held by banks, consultancies, and tech giants
+- **Patent trolls target successful projects** after they gain traction and funding
+- **Startups, DAOs, and open-science projects** lack affordable, portable IP coverage
+- **Investors and regulators** increasingly ask about IP diligence during funding rounds
 
-🌟 To help guide your efforts, consider the following goals. Additionally, the current branch includes an example of SVG NFTs, the Loogies. Feel free to use it as inspiration or start your project entirely from scratch! 🚀
-
-### 🥅 Goals:
-
-- [ ] Design and implement SVG generation logic within the contract
-- [ ] Add metadata generation functionality to the smart contract
-- [ ] Make sure metadata is stored and retrievable on-chain
-- [ ] Ensure each minted NFT is unique and customizable
-- [ ] Create UI for minting and interaction with your smart contracts
-
-### ⚔️ Side Quests:
-
-- [ ] Leave the minting funds in the contract, so the minter does not pay extra gas to send the funds to the recipient address. Create a `Withdraw()` function to allow the owner to withdraw the funds.
-- [ ] Explore other [pricing models for minting NFTs](https://docs.artblocks.io/creator-docs/minter-suite/minting-philosophy/), such as dutch auctions (with or without settlement)
-- [ ] Set different phases for minting, such as a discount for early adopters (allowlisted). Manage the allowlist and the functions to switch between phases.
+### The Solution
+Brolli offers **on-chain proof of patent license coverage** through:
+- ✅ **Soulbound NFTs** (non-transferable, wallet-bound)
+- ✅ **USDC payment integration** ($99 per license, renewable annually)
+- ✅ **IPFS-anchored legal provenance** (notarized affidavits)
+- ✅ **Team & agent purchase flows** (human + AI agent distribution)
+- ✅ **Portable verification** (on-chain license expiry tracking)
 
 ---
 
-## Checkpoint 0: 📦 Environment 📚
+## 🏗️ Architecture
 
-Before you begin, you need to install the following tools:
+### Tech Stack
+- **Smart Contracts:** Solidity 0.8.17, Hardhat deployment
+- **Frontend:** Next.js 14 (App Router), RainbowKit, Wagmi, Tailwind CSS
+- **Blockchain:** Base (Ethereum L2)
+- **Payment:** USDC (ERC-20) via SafeERC20 pattern
+- **AI Agent:** ElizaOS conversational sales agent
+- **Payment Protocol:** Coinbase x402 (HTTP 402 for agent purchases)
 
-- [Node (v18 LTS)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+### Smart Contract: `Brolli.sol`
 
-Then download the challenge to your computer and install dependencies by running:
+**Key Features:**
+- ERC-721 Enumerable (NFT standard)
+- Soulbound (non-transferable via `_beforeTokenTransfer` override)
+- USDC payment pull pattern (user approves, contract pulls)
+- 1-year license term with on-chain expiry tracking
+- Max supply: 50 licenses (limited Holiday Hacker release)
+- Voucher system for agent/batch purchases (EIP-712 signatures)
 
-```sh
-git clone https://github.com/scaffold-eth/se-2-challenges.git challenge-7-svg-nft
-cd challenge-7-svg-nft
-git checkout challenge-7-svg-nft
-yarn install
+**Core Functions:**
+```solidity
+function mint(string memory name, string memory imageUri, string memory provenanceCid) 
+    external nonReentrant returns (uint256)
+    
+function hasLicense(address who) public view returns (bool)
+
+function mintOrRenewWithVoucher(Voucher calldata v, bytes calldata sig, ...)
+    external nonReentrant returns (uint256)
 ```
 
-> in the same terminal, start your local network (a blockchain emulator in your computer):
+### Payment Flows
 
-```sh
-yarn chain
-```
+**Human Purchase Flow (Main Page):**
+1. User connects wallet (MetaMask, Coinbase Wallet, etc.)
+2. User accepts terms & conditions
+3. User approves Brolli contract to spend $99 USDC
+4. User calls `mint()` → contract pulls USDC → NFT minted
 
-> in a second terminal window, 🛰 deploy your contract (locally):
+**Agent Purchase Flow (x402-gated API):**
+1. Agent authenticates via x402 protocol (HTTP 402)
+2. Agent pays via USDC transfer to resource wallet
+3. Backend issues signed EIP-712 voucher
+4. Agent calls `mintOrRenewWithVoucher()` with voucher + signature
 
-```sh
-cd challenge-7-svg-nft
-yarn deploy
-```
-
-> in a third terminal window, start your 📱 frontend:
-
-```sh
-cd challenge-7-svg-nft
-yarn start
-```
-
-📱 Open http://localhost:3000 to see the app.
-
-> 👩‍💻 Rerun `yarn deploy --reset` whenever you want to deploy new contracts to the frontend, update your current contracts with changes, or re-deploy it to get a fresh contract address.
-
-🔏 Now you are ready to edit your smart contracts `YourCollectible.sol` in `packages/hardhat/contracts`
+**Batch Purchase Flow (Team/Group):**
+1. Team lead provides list of wallet addresses
+2. Single x402 payment for all licenses
+3. Backend issues vouchers for each beneficiary
+4. Licenses minted to each team member's wallet
 
 ---
 
-## Checkpoint 1: 💾 Deploy your contracts! 🛰
+## 🙏 Built With
 
-📡 Edit the `defaultNetwork` to [your choice of public EVM networks](https://ethereum.org/en/developers/docs/networks/) in `packages/hardhat/hardhat.config.ts`
+### [Scaffold-ETH 2](https://scaffoldeth.io/) by [BuidlGuidl](https://buidlguidl.com/)
+Rapid prototyping framework for Ethereum dApps. Brolli leverages:
+- **Proven contract patterns** (`Vendor.sol`, `DEX.sol` for ERC-20 payment flows)
+- **Frontend hooks** (`useScaffoldWriteContract`, `useScaffoldReadContract`)
+- **Deployment infrastructure** (`hardhat-deploy` scripts)
+- **UI components** (`Address`, `Balance`, `AddressInput`)
 
-🔐 You will need to generate a **deployer address** using `yarn generate` This creates a mnemonic and saves it locally.
+### [ElizaOS](https://github.com/ai16z/eliza)
+AI agent framework for conversational interfaces. Brolli's sales agent uses:
+- Canonical knowledge base (patent FAQs, licensing info)
+- OpenAI LLM integration
+- Custom character persona for non-verbose, technical communication
 
-👩‍🚀 Use `yarn account` to view your deployer account balances.
-
-⛽️ You will need to send ETH to your **deployer address** with your wallet, or get it from a public faucet of your chosen network.
-
-🚀 Run `yarn deploy` to deploy your smart contract to a public network (selected in `hardhat.config.ts`)
-
-> 💬 Hint: You can set the `defaultNetwork` in `hardhat.config.ts` to `sepolia` or `optimismSepolia` **OR** you can `yarn deploy --network sepolia` or `yarn deploy --network optimismSepolia`.
-
----
-
-## Checkpoint 2: 🚢 Ship your frontend! 🚁
-
-✏️ Edit your frontend config in `packages/nextjs/scaffold.config.ts` to change the `targetNetwork` to `chains.sepolia` (or `chains.optimismSepolia` if you deployed to OP Sepolia)
-
-💻 View your frontend at http://localhost:3000 and verify you see the correct network.
-
-📡 When you are ready to ship the frontend app...
-
-📦 Run `yarn vercel` to package up your frontend and deploy.
-
-> Follow the steps to deploy to Vercel. Once you log in (email, github, etc), the default options should work. It'll give you a public URL.
-
-> If you want to redeploy to the same production URL you can run `yarn vercel --prod`. If you omit the `--prod` flag it will deploy it to a preview/test URL.
-
-> 🦊 Since we have deployed to a public testnet, you will now need to connect using a wallet you own or use a burner wallet. By default 🔥 `burner wallets` are only available on `hardhat` . You can enable them on every chain by setting `onlyLocalBurnerWallet: false` in your frontend config (`scaffold.config.ts` in `packages/nextjs/`)
-
-#### Configuration of Third-Party Services for Production-Grade Apps.
-
-By default, 🏗 Scaffold-ETH 2 provides predefined API keys for popular services such as Alchemy and Etherscan. This allows you to begin developing and testing your applications more easily, avoiding the need to register for these services.  
-This is great to complete your **SpeedRunEthereum**.
-
-For production-grade applications, it's recommended to obtain your own API keys (to prevent rate limiting issues). You can configure these at:
-
-- 🔷`ALCHEMY_API_KEY` variable in `packages/hardhat/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
-
-- 📃`ETHERSCAN_API_KEY` variable in `packages/hardhat/.env` with your generated API key. You can get your key [here](https://etherscan.io/myapikey).
-
-> 💬 Hint: It's recommended to store env's for nextjs in Vercel/system env config for live apps and use .env.local for local testing.
+### [Coinbase x402](https://github.com/coinbase/x402)
+HTTP 402 payment protocol for AI agents. Enables:
+- Programmatic USDC payments from agents
+- Signed voucher issuance after payment verification
+- Team/batch purchase workflows
 
 ---
 
-## Checkpoint 3: 📜 Contract Verification
+## 🎁 Holiday Hacker Limited Release
 
-Run the `yarn verify --network your_network` command to verify your contracts on etherscan 🛰
+**This version of Brolli is a special limited release (50 licenses) for teams and developers participating in hackathons during the 2025 holiday season.**
+
+### Holiday Pricing
+- **$99 per license** (through January 9, 2026)
+- **Regular price: $199** (starting January 10, 2026)
+- **Limited to 50 total licenses** (first-come, first-served)
+
+### Target Audience
+- Hackathon teams building fintech, RWA, stablecoin, or DeFi projects
+- Developers seeking IP coverage for investor/regulatory diligence
+- DAOs and open-science projects requiring patent license documentation
 
 ---
 
-> 👩‍❤️‍👨 Share your public url with friends, showcase your art on-chain, and enjoy the minting experience together🎉!!
+## 📋 TODOs
 
-> 🏃 Head to your next challenge [here](https://speedrunethereum.com).
+### Phase 1: Payment & Distribution
+- [ ] Finish multi-token payment support for human users
+- [ ] Finish multi-token payment support for agentic users
+- [ ] Test agent programmatic purchase flow (x402 + voucher system)
+- [ ] Test batch/group purchase for teams (multi-wallet minting)
+- [ ] Verify x402 payment verification on Base mainnet
+- [ ] Review teams/agents page copy for clarity from agent perspective (x402 workflow)
 
-> 💬 Problems, questions, comments on the stack? Post them to the [🏗 scaffold-eth developers chat](https://t.me/joinchat/F7nCRK3kI93PoCOk)
+### Phase 2: User Experience
+- [ ] Add GitHub OAuth for streamlined onboarding
+- [ ] Refine sales agent behavior (reduce verbosity, improve technical accuracy)
+- [ ] Add license renewal UI (existing holders)
+
+### Phase 3: Backend Hardening
+- [ ] Implement royalty segregation (creator fees, donation pools)
+- [ ] Add admin dashboard for voucher management
+- [ ] Harden rate limiting and abuse prevention for x402 endpoints
+- [ ] Set up automated license expiry notifications
+
+### Phase 4: Post-Launch
+- [ ] Gather user feedback from hackathon participants
+- [ ] Evaluate expansion to additional patent portfolios
+- [ ] Consider DAO governance for licensing terms
+
+---
+
+## 🔗 Links
+
+- **Live App:** [TBD - Vercel URL]
+- **Base Mainnet Contract:** [`0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0`](https://basescan.org/address/0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0)
+- **Scaffold-ETH 2:** https://scaffoldeth.io
+- **ElizaOS:** https://github.com/ai16z/eliza
+- **Coinbase x402:** https://github.com/coinbase/x402
+
+---
+
+**Built with 🏗️ by rangers using Scaffold-ETH 2, ElizaOS, and Coinbase x402**

@@ -1,0 +1,42 @@
+US 12,095,919 B2 — “Dynamic Data Compliance Controls at the Highest Directives and Standards Applicable with a Net‑Sum Formula as a Zero‑Knowledge Proof Compliance Validation Key”
+
+Patent metadata (excerpt):
+- Inventor: David Stefanich
+- Applicant/Assignee: Rymedi, Inc.
+- Filed: Nov. 24, 2021 (claims priority to provisional filed Nov. 24, 2020)
+- Date of patent: Sep. 17, 2024
+
+Abstract (excerpt):
+A software mechanism for controlling data use in compliance with applicable legal standards and directives via a symbolic instruction set that additionally creates a mathematical net-sum to provide a data compliance validation key for use of that data in software, firmware and hardware.
+In some embodiments, the software mechanism identifies and tags via a symbolic instruction set the standards and directives applicable to data elements as a result of laws, technical and industry standards, contractual obligations, and other sources of norms, in order to streamline data compliance in forthcoming uses of that data.
+In other embodiments, a symbolic instruction set creates compliance-validation keys utilizing a net-sum method across applicable data norms to provide cryptographic zero-knowledge proof of the compliance of such data for software, firmware and hardware uses.
+
+Technical field (excerpt):
+The present disclosure is directed, in general, to a software mechanism for controlling data use in compliance with applicable legal standards and directives via a symbolic instruction set that additionally creates a mathematical net-sum to provide a data compliance validation key for use of that data in software, firmware and hardware.
+
+Background (excerpt):
+Today's information and data governance is applied in a linear fashion… treating data as a static object or element in time. In emerging information societies… data have different states as a result of changing relations to other data, contexts of use, and pre-existing web of rights and permissions… Therefore, a need exists for the capability to represent dynamic governance compliance as a symbolic instruction set… A further need exists for a zero-knowledge proof compliance validation key to streamline… data uses where mere reliable assurance of compliance is all that is required.
+
+Summary (excerpt):
+In some embodiments, a software mechanism identifies and tags via a symbolic instruction set the standards and directives applicable to data elements as a result of laws, technical and industry standards, contractual obligations, and other sources of norms, in order to streamline data compliance in forthcoming uses of that data.
+In other embodiments, a symbolic instruction set creates compliance-validation keys utilizing a net-sum method across applicable data norms to provide cryptographic zero-knowledge proof of the compliance of such data for software, firmware and hardware uses.
+
+Detailed description (FIG. 2 method steps excerpt; condensed):
+Step 1: Locate a data element jurisdictionally; identify applicable jurisdictions/norms based on source, origin, storage/transmission location, industry usage, contractual obligations, etc.
+Step 2: Break down which standards/directives are applicable based on dynamic properties (past/future uses, rights holders, legal status, law/regulation/standards, contractual obligations, etc.).
+Step 3: Operationalize best practices for control points/policy enforcement (access controls, MFA, file formats, encryption, reporting, etc.).
+Step 4: Enrich the data element with relational and contextual information to inform governance signals.
+Step 5: Dynamic tagging: publicly viewable baseline metadata → tailored private metadata based on the reviewing entity’s keys/properties.
+Step 6: Create an abstraction of governing constraints; manage conflicts between directives; identify changeable vs static rules and authorized entities; handle residual rights/liabilities; optionally automate dispute settlement and future-governance tags.
+Step 7: Apply controls to actions over the data element (transport/storage/archiving/time limits/enrichment/modification/etc.).
+Step 8: Manage access controls via key management; distribute access keys based on permissions.
+Step 9: Modify the data element to execute an operation in accordance with standards/directives and produce a functional output.
+Step 10: Create a net-sum representation to provide a zero-knowledge proof compliance validation key.
+
+Claims (excerpt; partial):
+Claim 1 (excerpt): A method for managing use of data in compliance with data protection standards, including storing information about standards, receiving a data element, analyzing to determine static properties, determining governing standards using those properties, and storing/access managed according to associated access controls; distributing an access key based on static properties.
+
+NOTE:
+This text file is a curated local excerpt intended for keyword search and grounded discussion inside the Brolli app. It is not a substitute for reading the full patent document.
+
+
