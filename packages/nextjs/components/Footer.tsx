@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Navigation from "next/navigation"
 
 
 /**
@@ -19,6 +18,10 @@ export const Footer = () => {
         <Link href="/terms" className="link">
           Terms
         </Link>
+        <span>·</span>
+        <a href="https://github.com/martianina/brolli" target="_blank" rel="noopener noreferrer" className="link">
+          GitHub
+        </a>
       </div>
             
     </div>
