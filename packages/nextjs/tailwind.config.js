@@ -11,37 +11,6 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        light: {
-          primary: "#111111",            // very dark gray
-          "primary-content": "#FFFFFF",
-          secondary: "#333333",          // dark gray
-          "secondary-content": "#FFFFFF",
-          accent: "#555555",             // medium gray
-          "accent-content": "#FFFFFF",
-          neutral: "#777777",            // neutral gray
-          "neutral-content": "#FFFFFF",
-          "base-100": "#FFFFFF",         // lightest background
-          "base-200": "#F5F5F5",         // very light gray background
-          "base-300": "#E5E5E5",         // light gray surface
-          "base-content": "#111111",     // dark text
-          info: "#888888",               // muted info gray
-          success: "#666666",            // dark gray for success
-          warning: "#555555",            // dark gray warning
-          error: "#444444",              // dark gray error
-
-          "--rounded-btn": "9999rem",
-          ".tooltip": {
-            "--tooltip-tail": "6px",
-          },
-          ".link": {
-            textUnderlineOffset: "2px",
-          },
-          ".link:hover": {
-            opacity: "80%",
-          },
-        },
-      },
-      {
         dark: {
           primary: "#FFFFFF",            // white for dark theme primary (buttons, highlights)
           "primary-content": "#111111",

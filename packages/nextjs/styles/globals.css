@@ -4,9 +4,22 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  color-scheme: dark;
+}
+
 :root,
-[data-theme] {
-  background: oklch(var(--b2));
+[data-theme],
+html,
+body {
+  background: #111111;
+  color: #FFFFFF;
+}
+
+html[data-theme="dark"],
+html {
+  background: #111111;
+  color: #FFFFFF;
 }
 
 body {
