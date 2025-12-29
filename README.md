@@ -2,7 +2,7 @@
 
 **Tokenized IP protection for fintech innovators**
 
-Brolli provides soulbound, 1-year renewable patent license NFTs on Base, enabling developers and teams to demonstrate IP coverage for blockchain-based financial applications.
+Brolli provides soulbound, 1-year renewable patent license NFTs on Base, enabling developers and teams to demonstrate IP coverage for blockchain-based financial+RWA applications.
 
 **Live on Base Mainnet:** [`0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0`](https://basescan.org/address/0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0)
 
