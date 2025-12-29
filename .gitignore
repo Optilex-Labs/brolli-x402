@@ -93,6 +93,12 @@ playwright/.cache/
 *.crt
 *.keypair
 
+# Demo helper scripts (actual files with private keys)
+packages/nextjs/setup-agent-env.sh
+packages/nextjs/scripts/generate-wallet.ts
+# Keep the .example versions
+!packages/nextjs/setup-agent-env.sh.example
+
 # OS files
 .DS_Store
 Thumbs.db
