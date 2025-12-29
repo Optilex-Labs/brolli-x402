@@ -1,0 +1,28 @@
+#!/bin/bash
+# x402 Agent Demo Environment Setup
+# Copy this file to setup-agent-env.sh and fill in your actual values
+# Then run: source ./setup-agent-env.sh
+
+# Agent wallet credentials (generate with: yarn ts-node scripts/generate-wallet.ts)
+export AGENT_PRIVATE_KEY="YOUR_AGENT_PRIVATE_KEY_HERE"
+
+# Contract address on Base Sepolia
+export BROLLI_CONTRACT="0xc51fcBceDb2Fc000692929e95a0F57e7b966fA24"
+
+# API endpoint (localhost for demo)
+export BROLLI_API_URL="http://localhost:3000"
+
+# Network
+export NETWORK="baseSepolia"
+
+# License signer private key (from packages/hardhat/.env or your deployer key)
+export LICENSE_SIGNER_PRIVATE_KEY="YOUR_DEPLOYER_PRIVATE_KEY_HERE"
+
+echo "✅ Environment variables set for x402 agent demo"
+echo ""
+echo "Agent will use:"
+echo "  Contract: $BROLLI_CONTRACT"
+echo "  API: $BROLLI_API_URL"
+echo "  Network: $NETWORK"
+echo ""
+

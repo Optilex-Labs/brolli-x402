@@ -10,7 +10,7 @@ export default function AgentsPage() {
       <div className="bg-gradient-to-r from-orange-500 to-pink-500 py-20 px-5">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h1 className="text-5xl font-bold mb-6">Brolli for Agents</h1>
-          <p className="text-2xl mb-8">Automate Team License Purchases</p>
+          <p className="text-2xl mb-8">Automated License Purchasing via x402</p>
           <Link
             href="/agents/purchase"
             className="btn btn-lg px-8 py-3 text-lg font-semibold"
@@ -20,7 +20,7 @@ export default function AgentsPage() {
               border: 'none'
             }}
           >
-            Purchase Licenses
+            Purchase License
           </Link>
         </div>
       </div>
@@ -28,34 +28,31 @@ export default function AgentsPage() {
       {/* Use Case Section */}
       <div className="max-w-5xl mx-auto px-5 py-16">
         <div className="bg-base-100 rounded-3xl p-8 border border-base-300 shadow-lg mb-12">
-          <h2 className="text-3xl font-bold mb-6">Use Case: Project Manager Agent</h2>
+          <h2 className="text-3xl font-bold mb-6">Use Case: Agent Wallet Licensing</h2>
           
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-lg mb-4">
-                A PM agent can provision Brolli licenses for an entire development team in one transaction.
+                AI agents can autonomously purchase Brolli licenses for their wallet using the x402 payment protocol.
               </p>
               
               <div className="bg-base-200 p-4 rounded-lg mb-4">
-                <h3 className="font-bold mb-2">Example Team:</h3>
+                <h3 className="font-bold mb-2">Example Use Cases:</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
-                    <span className="text-primary">→</span> CTO Wallet
+                    <span className="text-primary">→</span> Developer Agent acquiring access
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-primary">→</span> Backend Developer Wallet
+                    <span className="text-primary">→</span> Trading Agent purchasing IP rights
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-primary">→</span> Frontend Developer Wallet
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">→</span> DevOps Engineer Wallet
+                    <span className="text-primary">→</span> PM Agent provisioning for team member
                   </li>
                 </ul>
               </div>
 
               <p className="text-sm text-base-content/70">
-                One payment via x402 protocol provisions all four licenses automatically.
+                Single payment via x402 protocol provisions one license automatically.
               </p>
             </div>
 
@@ -67,23 +64,23 @@ export default function AgentsPage() {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-success font-bold">1.</span>
-                  <span>Collect team wallet addresses</span>
+                  <span>Specify beneficiary wallet</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-success font-bold">2.</span>
-                  <span>Call batch purchase API</span>
+                  <span>Call x402-gated API</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-success font-bold">3.</span>
-                  <span>x402 processes payment</span>
+                  <span>x402 verifies USDC payment</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-success font-bold">4.</span>
-                  <span>Receive vouchers for minting</span>
+                  <span>Receive EIP-712 voucher</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-success font-bold">5.</span>
-                  <span>Mint licenses to team wallets</span>
+                  <span>Mint license to beneficiary</span>
                 </div>
               </div>
             </div>
@@ -136,7 +133,7 @@ export default function AgentsPage() {
           
           <div className="bg-base-300 p-6 rounded-xl overflow-x-auto">
             <pre className="text-sm">
-              <code>{`// Agent batch purchase example
+              <code>{`// Agent single license purchase example
 import { X402Client } from "x402-next/client";
 
 const client = new X402Client({
@@ -144,29 +141,23 @@ const client = new X402Client({
   network: "eip155:8453", // Base mainnet
 });
 
-const teamWallets = [
-  "0xCTO_WALLET",
-  "0xBACKEND_WALLET",
-  "0xFRONTEND_WALLET",
-  "0xDEVOPS_WALLET",
-];
+const beneficiaryWallet = "0xBENEFICIARY_WALLET";
 
+// x402 automatically handles USDC payment
 const response = await client.fetch(
-  "/api/agents/purchase-batch",
+  "/api/license/authorize",
   {
     method: "POST",
     body: JSON.stringify({ 
-      beneficiaries: teamWallets 
+      beneficiary: beneficiaryWallet 
     }),
   }
 );
 
-const { vouchers, signatures } = await response.json();
+const { voucher, signature } = await response.json();
 
-// Now mint licenses using vouchers
-for (let i = 0; i < vouchers.length; i++) {
-  await mintLicense(vouchers[i], signatures[i]);
-}`}</code>
+// Mint license using the voucher
+await mintLicense(voucher, signature);`}</code>
             </pre>
           </div>
 

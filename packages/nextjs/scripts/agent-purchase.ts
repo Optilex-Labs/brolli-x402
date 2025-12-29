@@ -12,6 +12,7 @@
 import { createWalletClient, createPublicClient, http, parseEther } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { base, baseSepolia } from "viem/chains";
+import { X402Client } from "x402-next/client";
 
 // Configuration
 const NETWORK = process.env.NETWORK || "baseSepolia";
@@ -53,12 +54,18 @@ async function main() {
     transport: http(),
   });
 
-  // Step 1: Request voucher (this will trigger x402 payment flow)
-  console.log("📡 Step 1: Requesting license voucher...");
-  console.log("   This will trigger the x402 payment protocol");
+  // Initialize x402 client for automated payment handling
+  const x402Client = new X402Client({
+    privateKey: AGENT_PRIVATE_KEY,
+    rpcUrl: chain.rpcUrls.default.http[0],
+  });
+
+  // Step 1: Request voucher (x402 client handles payment automatically)
+  console.log("📡 Step 1: Requesting license voucher via x402...");
+  console.log("   X402Client will automatically handle payment if required");
   
   try {
-    const response = await fetch(`${BROLLI_API_URL}/api/license/authorize`, {
+    const response = await x402Client.fetch(`${BROLLI_API_URL}/api/license/authorize`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,21 +74,6 @@ async function main() {
         beneficiary: account.address,
       }),
     });
-
-    if (response.status === 402) {
-      console.log("💳 Step 2: Payment Required (HTTP 402)");
-      console.log("   x402 payment flow would be handled by x402 client SDK here");
-      console.log("   For this demo, the payment is handled by the x402-next middleware");
-      console.log("");
-      console.log("   In production, an agent would:");
-      console.log("   1. Read PAYMENT-REQUIRED header");
-      console.log("   2. Construct EIP-3009 payment authorization");
-      console.log("   3. Sign payment with agent's wallet");
-      console.log("   4. Retry request with PAYMENT-SIGNATURE header");
-      console.log("");
-      console.log("   See: https://docs.cdp.coinbase.com/x402/docs/how-x402-works");
-      return;
-    }
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${await response.text()}`);

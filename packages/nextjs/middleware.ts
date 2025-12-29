@@ -26,15 +26,6 @@ const paymentMiddleware = x402Middleware({
       network: X402_NETWORK,
       recipient: RESOURCE_WALLET as `0x${string}`,
     },
-    {
-      route: "/api/agents/purchase-batch",
-      // NOTE: x402 middleware charges a fixed price per request
-      // This is $99 regardless of batch size - agents should be aware
-      // For true dynamic pricing, agents may need to call single endpoint multiple times
-      price: `$${PRICE_USD}`,
-      network: X402_NETWORK,
-      recipient: RESOURCE_WALLET as `0x${string}`,
-    },
   ],
 });
 
@@ -44,12 +35,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // x402-gate AGENT endpoints only
-  // Human purchases use /api/license/purchase (no x402)
-  if (
-    request.nextUrl.pathname === "/api/license/authorize" ||
-    request.nextUrl.pathname === "/api/agents/purchase-batch"
-  ) {
+  // x402-gate AGENT endpoint only
+  // Human purchases go directly on-chain (no x402)
+  if (request.nextUrl.pathname === "/api/license/authorize") {
     return paymentMiddleware(request);
   }
 
@@ -57,6 +45,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/license/authorize", "/api/agents/purchase-batch"], // Only x402-gate agent routes
+  matcher: ["/api/license/authorize"], // Only x402-gate single-license agent route
 };
 

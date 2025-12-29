@@ -66,16 +66,14 @@ function mintOrRenewWithVoucher(Voucher calldata v, bytes calldata sig, ...)
 4. User calls `mint()` → contract pulls USDC → NFT minted
 
 **Agent Purchase Flow (x402-gated API):**
-1. Agent authenticates via x402 protocol (HTTP 402)
-2. Agent pays via USDC transfer to resource wallet
-3. Backend issues signed EIP-712 voucher
+1. Agent calls x402-protected `/api/license/authorize` endpoint
+2. x402 middleware verifies USDC payment automatically
+3. Backend issues signed EIP-712 voucher for beneficiary
 4. Agent calls `mintOrRenewWithVoucher()` with voucher + signature
 
-**Batch Purchase Flow (Team/Group):**
-1. Team lead provides list of wallet addresses
-2. Single x402 payment for all licenses
-3. Backend issues vouchers for each beneficiary
-4. Licenses minted to each team member's wallet
+**Batch Purchase Flow (Team/Group) - Coming Soon:**
+- Future feature for multi-wallet provisioning in single transaction
+- Agents will call single-license endpoint N times for team purchases
 
 ---
 
@@ -120,20 +118,23 @@ HTTP 402 payment protocol for AI agents. Enables:
 
 ## 📋 TODOs
 
-### Phase 1: Payment & Distribution
-- [ ] Finish multi-token payment support for human users
-- [ ] Finish multi-token payment support for agentic users
-- [ ] Test agent programmatic purchase flow (x402 + voucher system)
-- [ ] Test batch/group purchase for teams (multi-wallet minting)
-- [ ] Verify x402 payment verification on Base mainnet
-- [ ] Review teams/agents page copy for clarity from agent perspective (x402 workflow)
+### Phase 1: Payment & Distribution (Holiday Hacker MVP)
+- [x] Single-license x402 payment flow for agents
+- [x] Human USDC payment flow (approve + mint)
+- [x] EIP-712 voucher system for agent redemption
+- [ ] Complete end-to-end agent voucher redemption (payment verified, `mintOrRenewWithVoucher` not tested)
+- [ ] Test x402 on Base mainnet (currently only tested on Sepolia)
+- [ ] Finish multi-token payment support (add USDT, DAI alongside USDC)
 
 ### Phase 2: User Experience
+- [ ] Add batch/team purchase flow (multi-wallet minting with single x402 payment)
 - [ ] Add GitHub OAuth for streamlined onboarding
 - [ ] Refine sales agent behavior (reduce verbosity, improve technical accuracy)
 - [ ] Add license renewal UI (existing holders)
+- [ ] Agent wallet funding guide (Base Sepolia USDC faucet instructions)
 
 ### Phase 3: Backend Hardening
+- [ ] Add nonce persistence (currently in-memory, needs Redis/database)
 - [ ] Implement royalty segregation (creator fees, donation pools)
 - [ ] Add admin dashboard for voucher management
 - [ ] Harden rate limiting and abuse prevention for x402 endpoints
