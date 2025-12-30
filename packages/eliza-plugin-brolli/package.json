@@ -1,0 +1,48 @@
+{
+  "name": "@brolli/plugin-eliza",
+  "version": "1.0.0",
+  "description": "Patent risk assessment plugin for ElizaOS agents",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "eliza",
+    "elizaos",
+    "ai16z",
+    "patent",
+    "blockchain",
+    "x402",
+    "agent",
+    "plugin",
+    "IP",
+    "intellectual property",
+    "risk assessment"
+  ],
+  "author": "Brolli",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brolli-ip/brolli",
+    "directory": "packages/eliza-plugin-brolli"
+  },
+  "dependencies": {
+    "@brolli/eliza-agents": "workspace:*"
+  },
+  "peerDependencies": {
+    "@ai16z/eliza": "^0.1.0"
+  },
+  "devDependencies": {
+    "@ai16z/eliza": "^0.1.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
+

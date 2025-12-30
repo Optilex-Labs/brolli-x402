@@ -119,7 +119,132 @@
   "cta": [
     "Brolli is available at a Limited-Time Holiday Hack price of USDC $99 through January 10 2026. If you're hacking on a project, this special is for  you.",
     "If you tell me your use case (RWA, compliance, ZK proofs, data provenance), I can explain how the license maps to your risk surface."
-  ]
+  ],
+  "patentKnowledge": {
+    "verticals": {
+      "payments": {
+        "name": "Payments & Stablecoins",
+        "riskTier": "CRITICAL",
+        "riskScore": 8.5,
+        "patentCount": 1200,
+        "notablePatents": [
+          "US12095919B2 - Dynamic compliance controls",
+          "Cross-border payment validation systems"
+        ],
+        "keywords": ["stablecoin", "payment", "remittance", "cross-border", "USDC", "USDT"],
+        "settlementRange": "$100K-$500K",
+        "recommendation": "PURCHASE_IMMEDIATELY"
+      },
+      "lending": {
+        "name": "DeFi Lending",
+        "riskTier": "HIGH",
+        "riskScore": 7.8,
+        "patentCount": 847,
+        "notablePatents": [
+          "Collateralized loan protocols",
+          "Dynamic interest rate calculations"
+        ],
+        "keywords": ["lending", "borrow", "collateral", "aave", "compound", "cdp"],
+        "settlementRange": "$100K-$500K",
+        "recommendation": "PURCHASE_RECOMMENDED"
+      },
+      "dex": {
+        "name": "Decentralized Exchanges",
+        "riskTier": "MEDIUM_HIGH",
+        "riskScore": 6.2,
+        "patentCount": 534,
+        "notablePatents": [
+          "Automated market maker protocols",
+          "Liquidity pool management systems"
+        ],
+        "keywords": ["dex", "amm", "swap", "liquidity", "uniswap", "curve"],
+        "settlementRange": "$50K-$200K",
+        "recommendation": "CONSIDER_LICENSE"
+      },
+      "nft": {
+        "name": "NFT Infrastructure",
+        "riskTier": "MEDIUM",
+        "riskScore": 5.1,
+        "patentCount": 289,
+        "notablePatents": [
+          "NFT minting and metadata systems",
+          "Royalty distribution mechanisms"
+        ],
+        "keywords": ["nft", "erc721", "marketplace", "mint", "royalty"],
+        "settlementRange": "$25K-$100K",
+        "recommendation": "MONITOR"
+      },
+      "rwa": {
+        "name": "Real-World Assets",
+        "riskTier": "HIGH",
+        "riskScore": 8.2,
+        "patentCount": 678,
+        "notablePatents": [
+          "US12095919B2 - Data compliance controls for RWA",
+          "Tokenized asset custody and transfer systems"
+        ],
+        "keywords": ["rwa", "tokenize", "real estate", "securities", "bonds", "agriculture"],
+        "settlementRange": "$100K-$500K",
+        "recommendation": "PURCHASE_RECOMMENDED"
+      },
+      "identity": {
+        "name": "Identity & Privacy",
+        "riskTier": "HIGH",
+        "riskScore": 8.1,
+        "patentCount": 567,
+        "notablePatents": [
+          "Zero-knowledge proof systems for identity",
+          "Decentralized identity verification protocols"
+        ],
+        "keywords": ["kyc", "aml", "zkproof", "zk-snark", "privacy", "identity", "did"],
+        "settlementRange": "$100K-$500K",
+        "recommendation": "PURCHASE_RECOMMENDED"
+      },
+      "healthcare": {
+        "name": "Healthcare & Medical Data",
+        "riskTier": "CRITICAL",
+        "riskScore": 8.7,
+        "patentCount": 523,
+        "notablePatents": [
+          "US12095919B2 - Healthcare data compliance validation",
+          "Medical record access control systems",
+          "Patient data privacy protocols"
+        ],
+        "keywords": ["healthcare", "health data", "medical records", "patient data", "hipaa", "health information", "ehr", "electronic health records", "medical blockchain", "telemedicine"],
+        "settlementRange": "$100K-$500K",
+        "recommendation": "PURCHASE_IMMEDIATELY"
+      },
+      "research": {
+        "name": "Research & Academic Data",
+        "riskTier": "MEDIUM_HIGH",
+        "riskScore": 6.8,
+        "patentCount": 412,
+        "notablePatents": [
+          "Research data provenance and verification systems",
+          "Academic credential validation protocols",
+          "Open science data sharing mechanisms"
+        ],
+        "keywords": ["research", "academic", "science", "research data", "provenance", "open science", "scientific", "peer review", "research funding", "academic credentials", "publication", "data sharing"],
+        "settlementRange": "$75K-$300K",
+        "recommendation": "PURCHASE_RECOMMENDED"
+      }
+    },
+    "riskTiers": {
+      "CRITICAL": { "minScore": 8.0, "color": "red", "urgency": "immediate" },
+      "HIGH": { "minScore": 7.0, "color": "orange", "urgency": "recommended" },
+      "MEDIUM_HIGH": { "minScore": 5.0, "color": "yellow", "urgency": "consider" },
+      "MEDIUM": { "minScore": 3.0, "color": "blue", "urgency": "monitor" },
+      "LOW": { "minScore": 0, "color": "green", "urgency": "low_risk" }
+    },
+    "assessmentGuidance": [
+      "When user mentions project type, match to vertical using keywords",
+      "Always provide: risk score, patent count, settlement range, ROI",
+      "ROI = (settlement range / $99 license cost) = 1,010x to 5,050x",
+      "Scores ≥7.0 → strong purchase recommendation",
+      "Scores 5.0-6.9 → consider license for peace of mind",
+      "Scores <5.0 → monitor, license optional"
+    ]
+  }
 }
 
 

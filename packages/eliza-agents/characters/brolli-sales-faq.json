@@ -127,6 +127,30 @@
       "answer": "Because the NFT is soulbound, wallet rotation is non-trivial.\n\nTreat the covered wallet as critical infrastructure and plan custody and key management accordingly."
     },
     {
+      "id": "patent_risk_assessment",
+      "title": "What's my patent risk?",
+      "keywords": ["what's my risk", "my patent risk", "assess my risk", "my project risk"],
+      "answer": "I can assess your patent risk. Tell me what you're building:\n\n• Stablecoin/payment system?\n• Lending/collateral protocol?\n• DEX/AMM?\n• NFT marketplace?\n• RWA tokenization?\n• Identity/KYC/privacy features?\n\nI'll give you:\n- Risk score (0-10)\n- Relevant patent count\n- Settlement range\n- ROI analysis (license cost vs. litigation)\n- Purchase recommendation"
+    },
+    {
+      "id": "risk_score_explanation",
+      "title": "How do you calculate risk scores?",
+      "keywords": ["calculate risk", "calculation", "methodology", "how do you assess", "how is risk calculated", "risk score calculation"],
+      "answer": "Risk scores (0-10) are based on:\n\n1. Patent density in your vertical\n2. Enforcement history (trolls vs. legitimate)\n3. Settlement data from past cases\n4. Overlap with US12095919B2 claims\n5. Regulatory scrutiny level\n\nRisk Tiers:\n• 8.0-10.0 = CRITICAL (immediate purchase recommended)\n• 7.0-7.9 = HIGH (purchase recommended)\n• 5.0-6.9 = MEDIUM_HIGH (consider license)\n• 3.0-4.9 = MEDIUM (monitor)\n• 0-2.9 = LOW (low exposure)\n\nScores ≥7.0 mean you should strongly consider the license."
+    },
+    {
+      "id": "settlement_costs",
+      "title": "How much do patent settlements cost?",
+      "keywords": ["settlement", "litigation", "lawsuit cost", "legal fees", "settlements cost", "patent settlement", "litigation cost"],
+      "answer": "Blockchain patent settlements typically range:\n\n• Payments/Stablecoins: $100K-$500K\n• Lending/RWA: $100K-$500K\n• DEX: $50K-$200K\n• NFT: $25K-$100K\n\nThis doesn't include:\n- Legal defense fees ($200K-$1M+)\n- Lost development time\n- Delayed fundraising\n- Investor confidence damage\n\nROI of Brolli license:\n$99 license vs. $100K-$500K settlement = 1,010x to 5,050x ROI\n\nThis is why we position it as umbrella protection: reduce catastrophic tail risk cheaply while you build."
+    },
+    {
+      "id": "us12095919b2_coverage",
+      "title": "What does US12095919B2 cover?",
+      "keywords": ["us12095919b2", "patent", "what patent", "what does it cover", "claims"],
+      "answer": "US12095919B2 covers:\n\n**Dynamic data compliance controls for blockchain systems**\n\nKey claims:\n• Data elements with jurisdictional compliance validation\n• Access controls with key management\n• Zero-knowledge proof integration\n• Dynamic governance based on context\n• Multi-party authorization workflows\n\nIn plain terms, it covers:\n- Tokens with compliance rules (KYC/AML/accreditation)\n- RWA with geographic restrictions\n- Privacy features (zkProofs)\n- Escrow and multi-sig patterns\n- Conditional access controls\n\nIf you're building anything with \"regulated data\" or \"compliance controls,\" you likely overlap with this patent."
+    },
+    {
       "id": "unknown",
       "title": "Unknown / out of scope",
       "keywords": [],

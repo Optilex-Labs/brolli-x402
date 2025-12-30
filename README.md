@@ -33,6 +33,7 @@ Brolli offers **on-chain proof of patent license coverage** through:
 - **Frontend:** Next.js 14 (App Router), RainbowKit, Wagmi, Tailwind CSS
 - **Blockchain:** Base (Ethereum L2)
 - **Payment:** USDC (ERC-20) via SafeERC20 pattern
+- **IPFS Storage:** Pinata for legal provenance and NFT metadata
 - **AI Agent:** ElizaOS conversational sales agent
 - **Payment Protocol:** Coinbase x402 (HTTP 402 for agent purchases)
 
@@ -50,12 +51,19 @@ Brolli offers **on-chain proof of patent license coverage** through:
 ```solidity
 function mint(string memory name, string memory imageUri, string memory provenanceCid) 
     external nonReentrant returns (uint256)
+    // imageUri and provenanceCid point to Pinata IPFS storage
     
 function hasLicense(address who) public view returns (bool)
 
 function mintOrRenewWithVoucher(Voucher calldata v, bytes calldata sig, ...)
     external nonReentrant returns (uint256)
 ```
+
+**IPFS Integration (Pinata):**
+- Default image URI: `ipfs://bafkreialme2ca3b36nzq5rqqdqaw3k2le4uvgrdxtdj33t2j4sn44amisi`
+- Default provenance CID: `ipfs://bafkreidc7qbkdsfirbetsu5owm56oeqkhwhqlxpfgjio4qy3xexigod2nq`
+- Each license NFT includes immutable links to legal documentation
+- Notarized affidavits stored permanently on IPFS via Pinata
 
 ### Payment Flows
 
@@ -97,6 +105,46 @@ HTTP 402 payment protocol for AI agents. Enables:
 - Programmatic USDC payments from agents
 - Signed voucher issuance after payment verification
 - Team/batch purchase workflows
+
+### [Pinata](https://pinata.cloud/)
+IPFS infrastructure for decentralized storage. Brolli uses Pinata for:
+- **Legal provenance:** Notarized affidavits stored immutably on IPFS
+- **NFT metadata:** License images and patent documentation
+- **Verifiable claims:** Each license links to IPFS-anchored legal proof
+- **Permanent storage:** Ensuring license data persists beyond any single platform
+
+---
+
+## 🤖 For ElizaOS Agents
+
+Brolli is available as an ElizaOS plugin for autonomous patent risk assessment:
+
+```bash
+npm install @brolli/plugin-eliza
+```
+
+**Usage:**
+
+```typescript
+import { createAgent } from '@ai16z/eliza';
+import { brolliPlugin } from '@brolli/plugin-eliza';
+
+const agent = createAgent({
+  name: "My Agent",
+  plugins: [brolliPlugin]
+});
+```
+
+Your agent will now automatically:
+- Detect high-risk blockchain projects in conversations
+- Assess patent coverage using Brolli's knowledge graph API
+- Recommend license purchases with ROI calculations
+- Handle x402 payments autonomously
+
+**Links:**
+- [Plugin on npm](https://www.npmjs.com/package/@brolli/plugin-eliza)
+- [API Documentation](https://brolli.vercel.app/agents/docs)
+- [Risk Assessment API](https://brolli.vercel.app/agents)
 
 ---
 

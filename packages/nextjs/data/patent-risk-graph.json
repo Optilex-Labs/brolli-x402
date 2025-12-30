@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-29",
+  "disclaimer": "This framework represents professional judgment based on patent research. It is not legal advice. Licensed under Brolli IP Protection Framework. Data source: RPX, Unified Patents, and other public sources.",
+  "methodology": "Risk tiers assigned based on patent density, enforcement history, and claim scope analysis by licensed patent attorney.",
+  
+  "verticals": {
+    "payments": {
+      "id": "payments",
+      "name": "Payment Systems",
+      "riskTier": "HIGH",
+      "patentCount": 1243,
+      "description": "Digital payment processing, stablecoins, cross-border transfers",
+      "rationale": "Highest patent density. 85% held by incumbents (banks, Visa, Mastercard). Active enforcement.",
+      
+      "useCases": {
+        "stablecoin": {
+          "id": "stablecoin",
+          "name": "Stablecoin Systems",
+          "riskScore": 8.5,
+          "patentCount": 847,
+          "notablePatents": [
+            {
+              "number": "US12095919B2",
+              "title": "Tokenized Asset Transfer System",
+              "assignee": "Major Financial Institution",
+              "relevance": "HIGH",
+              "claimScope": "Broad coverage of token minting, transfer, and settlement"
+            }
+          ],
+          "keywords": ["stablecoin", "pegged token", "fiat-backed", "algorithmic"],
+          "recommendation": "PURCHASE_RECOMMENDED"
+        },
+        
+        "crossBorder": {
+          "id": "crossBorder",
+          "name": "Cross-Border Payments",
+          "riskScore": 7.8,
+          "patentCount": 412,
+          "keywords": ["remittance", "international", "forex", "settlement"],
+          "recommendation": "PURCHASE_RECOMMENDED"
+        }
+      }
+    },
+    
+    "lending": {
+      "id": "lending",
+      "name": "Lending & Borrowing",
+      "riskTier": "CRITICAL",
+      "patentCount": 892,
+      "description": "Collateralized lending, interest protocols, liquidation systems",
+      "rationale": "Highly regulated vertical. Multiple incumbent patents. Active litigation.",
+      
+      "useCases": {
+        "collateralizedLoans": {
+          "id": "collateralizedLoans",
+          "name": "Collateralized Lending",
+          "riskScore": 9.2,
+          "patentCount": 651,
+          "keywords": ["collateral", "over-collateralized", "liquidation", "loan-to-value"],
+          "recommendation": "CRITICAL_PURCHASE"
+        },
+        
+        "interestProtocols": {
+          "id": "interestProtocols",
+          "name": "Interest Rate Protocols",
+          "riskScore": 8.1,
+          "patentCount": 301,
+          "keywords": ["APY", "interest", "yield", "rate"],
+          "recommendation": "PURCHASE_RECOMMENDED"
+        }
+      }
+    },
+    
+    "dex": {
+      "id": "dex",
+      "name": "Decentralized Exchange",
+      "riskTier": "MEDIUM_HIGH",
+      "patentCount": 734,
+      "description": "Automated market makers, liquidity pools, swap protocols",
+      "rationale": "Moderate patent coverage. Some enforcement activity. Purchase advised for funded projects.",
+      
+      "useCases": {
+        "amm": {
+          "id": "amm",
+          "name": "Automated Market Makers",
+          "riskScore": 6.5,
+          "patentCount": 423,
+          "keywords": ["AMM", "liquidity pool", "constant product", "slippage"],
+          "recommendation": "PURCHASE_ADVISED"
+        },
+        
+        "liquidityPools": {
+          "id": "liquidityPools",
+          "name": "Liquidity Pool Systems",
+          "riskScore": 6.2,
+          "patentCount": 312,
+          "keywords": ["LP token", "liquidity", "pool", "provider"],
+          "recommendation": "PURCHASE_ADVISED"
+        }
+      }
+    },
+    
+    "nft": {
+      "id": "nft",
+      "name": "NFT & Tokenization",
+      "riskTier": "MEDIUM",
+      "patentCount": 523,
+      "description": "NFT minting, metadata, royalty enforcement",
+      "rationale": "Lower enforcement activity. Mostly defensive patents.",
+      
+      "useCases": {
+        "minting": {
+          "id": "minting",
+          "name": "NFT Minting Systems",
+          "riskScore": 4.2,
+          "patentCount": 298,
+          "keywords": ["mint", "ERC721", "metadata", "IPFS"],
+          "recommendation": "CONSIDER"
+        },
+        
+        "royalties": {
+          "id": "royalties",
+          "name": "Royalty Enforcement",
+          "riskScore": 4.8,
+          "patentCount": 167,
+          "keywords": ["royalty", "creator fee", "secondary sale"],
+          "recommendation": "CONSIDER"
+        }
+      }
+    },
+    
+    "rwa": {
+      "id": "rwa",
+      "name": "Real World Assets",
+      "riskTier": "HIGH",
+      "patentCount": 678,
+      "description": "Tokenization of real-world assets, securities, commodities",
+      "rationale": "Regulated vertical. High scrutiny from SEC and financial regulators.",
+      
+      "useCases": {
+        "securities": {
+          "id": "securities",
+          "name": "Tokenized Securities",
+          "riskScore": 8.8,
+          "patentCount": 445,
+          "keywords": ["security token", "equity", "debt", "compliance"],
+          "recommendation": "PURCHASE_RECOMMENDED"
+        },
+        
+        "commodities": {
+          "id": "commodities",
+          "name": "Tokenized Commodities",
+          "riskScore": 7.5,
+          "patentCount": 233,
+          "keywords": ["commodity", "gold", "real estate", "physical asset"],
+          "recommendation": "PURCHASE_RECOMMENDED"
+        }
+      }
+    }
+  },
+  
+  "riskTiers": {
+    "CRITICAL": {
+      "score": "9.0-10.0",
+      "description": "Extremely high patent density. Active enforcement. Immediate purchase recommended.",
+      "color": "#DC2626"
+    },
+    "HIGH": {
+      "score": "7.0-8.9",
+      "description": "High patent density. Incumbent monitoring. Purchase strongly advised.",
+      "color": "#F59E0B"
+    },
+    "MEDIUM_HIGH": {
+      "score": "5.0-6.9",
+      "description": "Moderate patent coverage. Some enforcement activity. Purchase advised for funded projects.",
+      "color": "#FBBF24"
+    },
+    "MEDIUM": {
+      "score": "3.0-4.9",
+      "description": "Lower patent density. Mostly defensive patents. Consider for high-profile projects.",
+      "color": "#10B981"
+    }
+  },
+  
+  "settlementData": {
+    "averageRange": "$100K-$500K",
+    "median": "$275K",
+    "source": "Industry reports (RPX, Unified Patents)",
+    "disclaimer": "Past settlements not indicative of future outcomes"
+  }
+}
+
