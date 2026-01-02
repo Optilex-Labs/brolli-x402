@@ -24,7 +24,7 @@ export function PromoBanner() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex-1 text-center">
           <span className="font-bold text-lg">
-            🎉 Holiday Hacker Special: $99 (Save $100) • Ends Jan 9, 2026
+            Founding Membership: $99 USDC • 50 seats • Ends Jan 9, 2026
           </span>
         </div>
         <button
