@@ -1,57 +1,88 @@
-# 🌂 Brolli for BUIDLers
+# Brolli: Founding Membership in Optilex LitFi Infrastructure
 
-**Tokenized IP protection for fintech innovators**
+**Patent license + early access to agentic litigation finance pools**
 
-Brolli provides soulbound, 1-year renewable patent license NFTs on Base, enabling developers and teams to demonstrate IP coverage for blockchain-based financial+RWA applications.
+Brolli is the first product from Optilex, an onchain litigation finance infrastructure for web3. The first 50 Brolli purchases grant Founding Membership status with priority access to future Optilex capital pooling, claims distribution, and governance mechanisms.
 
 **Live on Base Mainnet:** [`0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0`](https://basescan.org/address/0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0)
 
 ---
 
-## 🎯 Problem / Solution
+## What You Get
 
-### The Problem
-- **10,000+ blockchain patents** have been issued in the U.S., with 85% held by banks, consultancies, and tech giants
-- **Patent trolls target successful projects** after they gain traction and funding
-- **Startups, DAOs, and open-science projects** lack affordable, portable IP coverage
-- **Investors and regulators** increasingly ask about IP diligence during funding rounds
+### 1. Patent License (Immediate)
+- Soulbound NFT on Base proving license coverage
+- 1-year renewable term for US Patent 12,095,919 B2
+- IPFS-anchored legal provenance (notarized affidavits)
+- Coverage: Cryptographic licensing and distribution systems for blockchain-based financial applications
 
-### The Solution
-Brolli offers **on-chain proof of patent license coverage** through:
-- ✅ **Soulbound NFTs** (non-transferable, wallet-bound)
-- ✅ **USDC payment integration** ($99 per license, renewable annually)
-- ✅ **IPFS-anchored legal provenance** (notarized affidavits)
-- ✅ **Team & agent purchase flows** (human + AI agent distribution)
-- ✅ **Portable verification** (on-chain license expiry tracking)
+### 2. Optilex Founding Membership (Future Access)
+- Priority pool participation when Optilex LitFi infrastructure launches (Q1 2026)
+- Early access to capital pooling, claims NFTs, and governance
+- Limited to 50 founding members (one per wallet, ends January 9, 2026)
+
+**Important:** Founding Membership grants rights to future pool participation (an option), not automatic investment. Future participation requires separate opt-in and compliance verification.
 
 ---
 
-## 🏗️ Architecture
+## The Vision: Agentic Litigation Finance
+
+Traditional litigation finance is slow, opaque, and centralized. Legal claims are underutilized assets - most individuals and small companies can't afford to enforce their rights.
+
+**Optilex brings litigation finance onchain:**
+- Capital Pooling: Collective funding for legal claims at any scale
+- Claims Distribution: Automated settlement distributions via smart contracts
+- Multi-Party Governance: Transparent decision-making for claim selection and strategy
+- Agent-Executable: AI agents assess risk, match capital to claims, execute autonomously
+
+**The economics of law will never be the same.**
+
+Brolli is the first step - tokenized patent licenses demonstrating IP coverage. The founding membership model tests market demand while building toward the broader LitFi infrastructure.
+
+---
+
+## x402 Integration: Purchases for AI Agents
+
+Brolli leverages **Coinbase x402** (HTTP 402 payment protocol) to enable autonomous agent purchases:
+
+### Agent Purchase Flow
+1. Agent calls x402-protected `/api/license/authorize` endpoint
+2. x402 middleware verifies USDC payment automatically ($99)
+3. Backend issues signed EIP-712 voucher for beneficiary wallet
+4. Agent calls `mintOrRenewWithVoucher()` with voucher + signature
+5. Soulbound license NFT minted to beneficiary
+
+### Why x402?
+- Programmatic payments: Agents pay in USDC without human intervention
+- Signed vouchers: Backend cryptographically authorizes minting after payment
+- Team provisioning: Single agent can purchase licenses for multiple wallets
+- Verifiable flow: All payments and vouchers recorded onchain
+
+---
+
+## Architecture
 
 ### Tech Stack
-- **Smart Contracts:** Solidity 0.8.17, Hardhat deployment
-- **Frontend:** Next.js 14 (App Router), RainbowKit, Wagmi, Tailwind CSS
-- **Blockchain:** Base (Ethereum L2)
-- **Payment:** USDC (ERC-20) via SafeERC20 pattern
-- **IPFS Storage:** Pinata for legal provenance and NFT metadata
-- **AI Agent:** ElizaOS conversational sales agent
-- **Payment Protocol:** Coinbase x402 (HTTP 402 for agent purchases)
+- Smart Contracts: Solidity 0.8.17, Hardhat deployment on Base
+- Frontend: Next.js 14 (App Router), RainbowKit, Wagmi, Tailwind CSS
+- Payment: USDC (ERC-20) via SafeERC20 pull pattern
+- IPFS Storage: Pinata for legal provenance and NFT metadata
+- Payment Protocol: Coinbase x402 for agent purchases
+- Framework: Scaffold-ETH 2 for rapid prototyping
 
 ### Smart Contract: `Brolli.sol`
 
 **Key Features:**
-- ERC-721 Enumerable (NFT standard)
-- Soulbound (non-transferable via `_beforeTokenTransfer` override)
-- USDC payment pull pattern (user approves, contract pulls)
+- ERC-721 Enumerable (soulbound via `_beforeTokenTransfer` override)
+- USDC payment pull pattern (user approves, contract pulls $99)
 - 1-year license term with on-chain expiry tracking
-- Max supply: 50 licenses (limited Holiday Hacker release)
+- Max supply: 50 licenses (founding membership release)
 - Voucher system for agent/batch purchases (EIP-712 signatures)
 
 **Core Functions:**
 ```solidity
 function mint(string memory name, string memory imageUri, string memory provenanceCid) 
     external nonReentrant returns (uint256)
-    // imageUri and provenanceCid point to Pinata IPFS storage
     
 function hasLicense(address who) public view returns (bool)
 
@@ -59,150 +90,98 @@ function mintOrRenewWithVoucher(Voucher calldata v, bytes calldata sig, ...)
     external nonReentrant returns (uint256)
 ```
 
-**IPFS Integration (Pinata):**
-- Default image URI: `ipfs://bafkreialme2ca3b36nzq5rqqdqaw3k2le4uvgrdxtdj33t2j4sn44amisi`
-- Default provenance CID: `ipfs://bafkreidc7qbkdsfirbetsu5owm56oeqkhwhqlxpfgjio4qy3xexigod2nq`
-- Each license NFT includes immutable links to legal documentation
-- Notarized affidavits stored permanently on IPFS via Pinata
-
 ### Payment Flows
 
-**Human Purchase Flow (Main Page):**
-1. User connects wallet (MetaMask, Coinbase Wallet, etc.)
-2. User accepts terms & conditions
-3. User approves Brolli contract to spend $99 USDC
-4. User calls `mint()` → contract pulls USDC → NFT minted
+**Human Purchase:**
+1. Connect wallet
+2. Accept terms
+3. Approve USDC
+4. Mint NFT
 
-**Agent Purchase Flow (x402-gated API):**
-1. Agent calls x402-protected `/api/license/authorize` endpoint
-2. x402 middleware verifies USDC payment automatically
-3. Backend issues signed EIP-712 voucher for beneficiary
-4. Agent calls `mintOrRenewWithVoucher()` with voucher + signature
-
-**Batch Purchase Flow (Team/Group) - Coming Soon:**
-- Future feature for multi-wallet provisioning in single transaction
-- Agents will call single-license endpoint N times for team purchases
+**Agent Purchase (x402):**
+1. Agent pays via x402
+2. Backend verifies
+3. Issues EIP-712 voucher
+4. Agent mints
 
 ---
 
-## 🙏 Built With
+## Founding Membership Terms
 
-### [Scaffold-ETH 2](https://scaffoldeth.io/) by [BuidlGuidl](https://buidlguidl.com/)
-Rapid prototyping framework for Ethereum dApps. Brolli leverages:
-- **Proven contract patterns** (`Vendor.sol`, `DEX.sol` for ERC-20 payment flows)
-- **Frontend hooks** (`useScaffoldWriteContract`, `useScaffoldReadContract`)
-- **Deployment infrastructure** (`hardhat-deploy` scripts)
-- **UI components** (`Address`, `Balance`, `AddressInput`)
+**Limited Time Offer (Ends January 9, 2026):**
+- $99 in USDC (one-time payment on Base)
+- 50 founding memberships total (one per wallet)
+- Non-transferable (soulbound NFT)
 
-### [ElizaOS](https://github.com/ai16z/eliza)
-AI agent framework for conversational interfaces. Brolli's sales agent uses:
-- Canonical knowledge base (patent FAQs, licensing info)
-- OpenAI LLM integration
-- Custom character persona for non-verbose, technical communication
+**What Founding Members Receive:**
+1. Patent license (immediate utility)
+2. Priority access to Optilex litigation finance pools (Q1 2026)
+3. Early infrastructure access (capital pooling, claims NFTs, governance)
+
+**Legal Clarity:**
+- Membership grants right to participate in future pools (not automatic investment)
+- Infrastructure under development (no guarantees on launch dates or features)
+- Separate agreements required for actual pool participation
+
+---
+
+## Roadmap
+
+### Phase 1: Founding Membership Distribution (Now - Jan 9)
+- [x] Base mainnet deployment
+- [x] Human USDC payment flow (approve + mint)
+- [x] x402 agent payment integration
+- [x] EIP-712 voucher system
+- [ ] End-to-end agent voucher redemption testing
+- [ ] x402 mainnet testing (currently Sepolia-tested)
+
+### Phase 2: Optilex LitFi Infrastructure (Q1 2026)
+- [ ] Claims NFTs (ERC-1155) for representing legal interests
+- [ ] Capital pooling contracts with USDC
+- [ ] Multi-party approval workflows
+- [ ] Automated distribution mechanisms
+- [ ] Founding member onboarding to first pools
+
+### Phase 3: Agentic Integration
+- [ ] ElizaOS plugin for autonomous risk assessment
+- [ ] Agent-to-agent license transfers (within compliance bounds)
+- [ ] Batch purchase flows for team provisioning
+- [ ] API-driven pool participation for agents
+
+### Phase 4: Governance & Scale
+- [ ] Multi-pool support (different claim types, jurisdictions)
+- [ ] DAO governance for claim selection
+- [ ] Cross-jurisdictional legal framework
+- [ ] Additional patent portfolios and IP licensing
+
+---
+
+## Built With
+
+### [Scaffold-ETH 2](https://scaffoldeth.io/)
+Rapid prototyping framework for Ethereum dApps. Brolli leverages proven contract patterns, frontend hooks, and deployment infrastructure from the BuidlGuidl community.
 
 ### [Coinbase x402](https://github.com/coinbase/x402)
-HTTP 402 payment protocol for AI agents. Enables:
-- Programmatic USDC payments from agents
-- Signed voucher issuance after payment verification
-- Team/batch purchase workflows
+HTTP 402 payment protocol enabling programmatic USDC payments from AI agents. Core hackathon integration demonstrating autonomous agent purchases.
 
 ### [Pinata](https://pinata.cloud/)
-IPFS infrastructure for decentralized storage. Brolli uses Pinata for:
-- **Legal provenance:** Notarized affidavits stored immutably on IPFS
-- **NFT metadata:** License images and patent documentation
-- **Verifiable claims:** Each license links to IPFS-anchored legal proof
-- **Permanent storage:** Ensuring license data persists beyond any single platform
+IPFS infrastructure for decentralized storage. Brolli stores notarized affidavits and patent documentation permanently on IPFS via Pinata.
+
+### [ElizaOS](https://github.com/ai16z/eliza) (Coming Soon)
+AI agent framework for conversational interfaces. Future Brolli plugin will enable autonomous patent risk assessment and license purchases.
 
 ---
 
-## 🤖 For ElizaOS Agents
+## Links
 
-Brolli is available as an ElizaOS plugin for autonomous patent risk assessment:
-
-```bash
-npm install @brolli/plugin-eliza
-```
-
-**Usage:**
-
-```typescript
-import { createAgent } from '@ai16z/eliza';
-import { brolliPlugin } from '@brolli/plugin-eliza';
-
-const agent = createAgent({
-  name: "My Agent",
-  plugins: [brolliPlugin]
-});
-```
-
-Your agent will now automatically:
-- Detect high-risk blockchain projects in conversations
-- Assess patent coverage using Brolli's knowledge graph API
-- Recommend license purchases with ROI calculations
-- Handle x402 payments autonomously
-
-**Links:**
-- [Plugin on npm](https://www.npmjs.com/package/@brolli/plugin-eliza)
-- [API Documentation](https://brolli.vercel.app/agents/docs)
-- [Risk Assessment API](https://brolli.vercel.app/agents)
-
----
-
-## 🎁 Holiday Hacker Limited Release
-
-**This version of Brolli is a special limited release (50 licenses) for teams and developers participating in hackathons during the 2025 holiday season.**
-
-### Holiday Pricing
-- **$99 per license** (through January 9, 2026)
-- **Regular price: $199** (starting January 10, 2026)
-- **Limited to 50 total licenses** (first-come, first-served)
-
-### Target Audience
-- Hackathon teams building fintech, RWA, stablecoin, or DeFi projects
-- Developers seeking IP coverage for investor/regulatory diligence
-- DAOs and open-science projects requiring patent license documentation
-
----
-
-## 📋 TODOs
-
-### Phase 1: Payment & Distribution (Holiday Hacker MVP)
-- [x] Single-license x402 payment flow for agents
-- [x] Human USDC payment flow (approve + mint)
-- [x] EIP-712 voucher system for agent redemption
-- [ ] Complete end-to-end agent voucher redemption (payment verified, `mintOrRenewWithVoucher` not tested)
-- [ ] Test x402 on Base mainnet (currently only tested on Sepolia)
-- [ ] Finish multi-token payment support (add USDT, DAI alongside USDC)
-
-### Phase 2: User Experience
-- [ ] Add batch/team purchase flow (multi-wallet minting with single x402 payment)
-- [ ] Add GitHub OAuth for streamlined onboarding
-- [ ] Refine sales agent behavior (reduce verbosity, improve technical accuracy)
-- [ ] Add license renewal UI (existing holders)
-- [ ] Agent wallet funding guide (Base Sepolia USDC faucet instructions)
-
-### Phase 3: Backend Hardening
-- [ ] Add nonce persistence (currently in-memory, needs Redis/database)
-- [ ] Implement royalty segregation (creator fees, donation pools)
-- [ ] Add admin dashboard for voucher management
-- [ ] Harden rate limiting and abuse prevention for x402 endpoints
-- [ ] Set up automated license expiry notifications
-
-### Phase 4: Post-Launch
-- [ ] Gather user feedback from hackathon participants
-- [ ] Evaluate expansion to additional patent portfolios
-- [ ] Consider DAO governance for licensing terms
-
----
-
-## 🔗 Links
-
-- **Live App:** [TBD - Vercel URL]
+- **Website:** [brolli.optilex.ai](https://brolli.vercel.app)
 - **Base Mainnet Contract:** [`0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0`](https://basescan.org/address/0xF44d5712826Eca7429ccf7F2fEa4b61f089e3Ea0)
+- **GitHub:** [Optilex-Labs/brolli-x402](https://github.com/Optilex-Labs/brolli-x402)
 - **Scaffold-ETH 2:** https://scaffoldeth.io
-- **ElizaOS:** https://github.com/ai16z/eliza
 - **Coinbase x402:** https://github.com/coinbase/x402
 
 ---
 
-**Built with 🏗️ by rangers using Scaffold-ETH 2, ElizaOS, and Coinbase x402**
+**Built for the x402 Hackathon by Optilex Labs**
+
+Demonstrating autonomous agent purchases via x402 while distributing founding memberships in litigation finance infrastructure.

@@ -126,8 +126,8 @@ export default function AgentPurchasePage() {
             disabled={isSubmitting || !beneficiary.trim()}
             className="btn w-full text-lg"
             style={{
-              backgroundColor: '#A855F7',
-              borderColor: '#A855F7',
+              backgroundColor: '#4f46e5',
+              borderColor: '#4f46e5',
               color: 'white',
               opacity: (isSubmitting || !beneficiary.trim()) ? 0.5 : 1
             }}

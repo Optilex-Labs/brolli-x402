@@ -9,9 +9,9 @@ const baseUrl = process.env.VERCEL_URL
   : `http://localhost:${process.env.PORT || 3000}`;
 const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
-const title = "Brolli | IP Protection for innovators";
-const titleTemplate = "%s | Brolli";
-const description = "Protection against patent trolls";
+const title = "Optilex | Agentic Litigation Finance Infrastructure";
+const titleTemplate = "%s | Optilex";
+const description = "Onchain capital pooling and claims distribution. The economics of law will never be the same.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     description,
   },
   icons: {
-    icon: [{ url: "/hero.png", sizes: "32x32", type: "image/png" }],
+    icon: [{ url: "/optilex-logo.svg", type: "image/svg+xml" }],
   },
 };
 

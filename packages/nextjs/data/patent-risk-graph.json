@@ -5,18 +5,18 @@
   "methodology": "Risk tiers assigned based on patent density, enforcement history, and claim scope analysis by licensed patent attorney.",
   
   "verticals": {
-    "payments": {
-      "id": "payments",
-      "name": "Payment Systems",
+    "healthResearch": {
+      "id": "healthResearch",
+      "name": "Health & Research",
       "riskTier": "HIGH",
       "patentCount": 1243,
-      "description": "Digital payment processing, stablecoins, cross-border transfers",
-      "rationale": "Highest patent density. 85% held by incumbents (banks, Visa, Mastercard). Active enforcement.",
+      "description": "Healthcare data systems, research platforms, clinical trials",
+      "rationale": "Highest patent density. 85% held by incumbents (pharma, healthcare providers). Active enforcement.",
       
       "useCases": {
-        "stablecoin": {
-          "id": "stablecoin",
-          "name": "Stablecoin Systems",
+        "healthData": {
+          "id": "healthData",
+          "name": "Health Data Systems",
           "riskScore": 8.5,
           "patentCount": 847,
           "notablePatents": [
@@ -28,16 +28,16 @@
               "claimScope": "Broad coverage of token minting, transfer, and settlement"
             }
           ],
-          "keywords": ["stablecoin", "pegged token", "fiat-backed", "algorithmic"],
+          "keywords": ["health records", "medical data", "HIPAA", "patient data"],
           "recommendation": "PURCHASE_RECOMMENDED"
         },
         
-        "crossBorder": {
-          "id": "crossBorder",
-          "name": "Cross-Border Payments",
+        "researchData": {
+          "id": "researchData",
+          "name": "Research Data Sharing",
           "riskScore": 7.8,
           "patentCount": 412,
-          "keywords": ["remittance", "international", "forex", "settlement"],
+          "keywords": ["research", "clinical trials", "data sharing", "collaboration"],
           "recommendation": "PURCHASE_RECOMMENDED"
         }
       }

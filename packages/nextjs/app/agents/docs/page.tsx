@@ -259,8 +259,8 @@ console.log('Expires:', new Date(Number(expiry) * 1000));`}</code></pre>
             href="/agents/purchase"
             className="btn btn-lg"
             style={{
-              backgroundColor: '#A855F7',
-              borderColor: '#A855F7',
+              backgroundColor: '#4f46e5',
+              borderColor: '#4f46e5',
               color: 'white'
             }}
           >

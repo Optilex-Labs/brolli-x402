@@ -12,8 +12,8 @@ module.exports = {
     themes: [
       {
         dark: {
-          primary: "#FFFFFF",            // white for dark theme primary (buttons, highlights)
-          "primary-content": "#111111",
+          primary: "#4f46e5",            // indigo for dark theme primary (buttons, highlights)
+          "primary-content": "#FFFFFF",
           secondary: "#DDDDDD",          // light gray
           "secondary-content": "#111111",
           accent: "#AAAAAA",             // medium gray accent

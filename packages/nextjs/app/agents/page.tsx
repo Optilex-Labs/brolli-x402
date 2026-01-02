@@ -45,7 +45,7 @@ export default function AgentsPage() {
               href="/"
               className="btn btn-lg px-8 py-3 text-lg font-semibold"
               style={{
-                backgroundColor: '#A855F7',
+                backgroundColor: '#4f46e5',
                 color: 'white',
                 border: 'none'
               }}
@@ -207,8 +207,8 @@ export default function AgentsPage() {
                 href="/"
                 className="btn btn-lg w-full mb-4"
                 style={{
-                  backgroundColor: '#A855F7',
-                  borderColor: '#A855F7',
+                  backgroundColor: '#4f46e5',
+                  borderColor: '#4f46e5',
                   color: 'white'
                 }}
               >

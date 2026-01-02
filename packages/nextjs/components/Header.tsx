@@ -15,14 +15,18 @@ type HeaderMenuLink = {
 };
 
 export const menuLinks: HeaderMenuLink[] = [
-  
+  {
+    label: "Get Brolli",
+    href: "/mint",
+    
+  },
   {
     label: "Brolli NFT Details",
     href: "/details",
     
   },
   {
-    label: "For Agents & Teams",
+    label: "For Agents",
     href: "/agents",
     
   },
@@ -43,20 +47,20 @@ export const HeaderMenuLinks = () => {
               passHref
               className={`py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col shadow-md hover:shadow-lg transition-all duration-200`}
               style={{
-                backgroundColor: isActive ? 'transparent' : '#A855F7',
-                borderColor: '#A855F7',
-                border: '1px solid #A855F7',
-                color: isActive ? '#A855F7' : 'white'
+                backgroundColor: isActive ? 'transparent' : '#4f46e5',
+                borderColor: '#4f46e5',
+                border: '1px solid #4f46e5',
+                color: isActive ? '#4f46e5' : 'white'
               }}
               onMouseEnter={(e) => {
                 if (!isActive) {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#A855F7';
+                  e.currentTarget.style.color = '#4f46e5';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isActive) {
-                  e.currentTarget.style.backgroundColor = '#A855F7';
+                  e.currentTarget.style.backgroundColor = '#4f46e5';
                   e.currentTarget.style.color = 'white';
                 }
               }}
@@ -83,7 +87,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2" style={{ backgroundColor: 'transparent' }}>
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -109,11 +113,11 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-10 h-10">
-            <Image alt="Brolli logo" className="cursor-pointer" fill src="/logo.svg" />
+            <Image alt="Optilex logo" className="cursor-pointer" fill src="/optilex-logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Brolli</span>
-            <span className="text-xs">IP Protection for Fintech BUIDLers & Innovators</span>
+            <span className="font-bold leading-tight">Optilex</span>
+            <span className="text-xs">Agentic LitFi Infrastructure</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
