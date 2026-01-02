@@ -36,25 +36,25 @@ export default function AgentsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-500 to-pink-500 py-20 px-5">
-        <div className="max-w-4xl mx-auto text-center text-white">
+      <div className="bg-base-200 py-20 px-5">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl font-bold mb-6">Brolli for Agents</h1>
           <p className="text-2xl mb-8">Automated License Purchasing via x402</p>
           <div className="flex gap-4 justify-center">
             <Link
-              href="/agents/purchase"
+              href="/"
               className="btn btn-lg px-8 py-3 text-lg font-semibold"
               style={{
-                backgroundColor: 'white',
-                color: '#F97316',
+                backgroundColor: '#A855F7',
+                color: 'white',
                 border: 'none'
               }}
             >
-              Purchase License
+              Get Brolli
             </Link>
             <Link
               href="/agents/docs"
-              className="btn btn-lg btn-outline px-8 py-3 text-lg font-semibold text-white border-white hover:bg-white hover:text-orange-500"
+              className="btn btn-lg btn-outline px-8 py-3 text-lg font-semibold"
             >
               API Docs
             </Link>
@@ -95,7 +95,6 @@ export default function AgentsPage() {
 
             <div className="bg-base-200 p-6 rounded-2xl">
               <div className="text-center mb-4">
-                <div className="text-4xl mb-2">🤖</div>
                 <div className="font-bold text-lg">Agent Workflow</div>
               </div>
               <div className="space-y-2 text-sm">
@@ -126,9 +125,9 @@ export default function AgentsPage() {
 
         {/* Risk Calculator Widget */}
         <div className="bg-base-100 rounded-3xl p-8 border border-primary/20 shadow-lg mb-12">
-          <h2 className="text-3xl font-bold mb-4">Assess Your Patent Risk</h2>
+          <h2 className="text-3xl font-bold mb-4">API based risk-assessment for agents</h2>
           <p className="text-base-content/70 mb-8">
-            Select your vertical to get a lawyer-curated risk assessment based on patent density and enforcement activity.
+            Not legal advice. For Demonstration purposes only.
           </p>
           
           <div className="grid md:grid-cols-5 gap-4 mb-8">
@@ -198,22 +197,22 @@ export default function AgentsPage() {
               </div>
               
               <div className="mb-6 p-4 bg-success/10 border border-success/30 rounded-lg">
-                <div className="font-bold text-success mb-2">💰 {riskResult.roi}</div>
+                <div className="font-bold text-success mb-2">{riskResult.roi}</div>
                 <div className="text-xl font-bold text-primary">
                   Recommendation: {riskResult.recommendation.replace('_', ' ')}
                 </div>
               </div>
               
               <Link 
-                href="/agents/purchase"
+                href="/"
                 className="btn btn-lg w-full mb-4"
                 style={{
-                  backgroundColor: '#F97316',
-                  borderColor: '#F97316',
+                  backgroundColor: '#A855F7',
+                  borderColor: '#A855F7',
                   color: 'white'
                 }}
               >
-                Purchase License - $99
+                Get Brolli - $99
               </Link>
               
               <div className="text-xs text-base-content/50 text-center">
@@ -225,22 +224,18 @@ export default function AgentsPage() {
 
         {/* ElizaOS Plugin Section */}
         <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl p-8 border border-purple-500/30 mb-12">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="text-6xl">🤖</div>
-            <div>
-              <h2 className="text-3xl font-bold">ElizaOS Integration</h2>
-              <p className="text-base-content/70">Add autonomous patent risk assessment to your agent</p>
-            </div>
+          <div className="mb-6">
+            <h2 className="text-3xl font-bold">ElizaOS Integration - Coming Soon</h2>
+            <p className="text-base-content/70">Add autonomous patent risk assessment to your agent</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Install the Plugin</h3>
+              <h3 className="text-xl font-bold mb-4">Coming Soon</h3>
               <div className="bg-base-300 p-4 rounded-lg mb-4 font-mono text-sm">
                 npm install @brolli/plugin-eliza
               </div>
               
-              <h3 className="text-xl font-bold mb-4">Add to Your Agent</h3>
               <div className="bg-base-300 p-4 rounded-lg mb-4 font-mono text-sm whitespace-pre-wrap">
 {`import { brolliPlugin } from '@brolli/plugin-eliza';
 
@@ -248,59 +243,38 @@ const agent = createAgent({
   plugins: [brolliPlugin]
 });`}
               </div>
-              
-              <a 
-                href="https://www.npmjs.com/package/@brolli/plugin-eliza"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline"
-              >
-                View on npm →
-              </a>
             </div>
             
             <div>
               <h3 className="text-xl font-bold mb-4">What It Does</h3>
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
-                  <span className="text-success text-xl">✓</span>
+                  <span className="text-success text-xl">•</span>
                   <div>
                     <div className="font-semibold">Automatic Detection</div>
                     <div className="text-sm text-base-content/70">Triggers when agent discusses blockchain projects</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-success text-xl">✓</span>
+                  <span className="text-success text-xl">•</span>
                   <div>
                     <div className="font-semibold">Risk Assessment</div>
                     <div className="text-sm text-base-content/70">Queries Brolli knowledge graph API for patent risk</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-success text-xl">✓</span>
+                  <span className="text-success text-xl">•</span>
                   <div>
                     <div className="font-semibold">Smart Recommendations</div>
                     <div className="text-sm text-base-content/70">Provides ROI-based purchase recommendations</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-success text-xl">✓</span>
+                  <span className="text-success text-xl">•</span>
                   <div>
                     <div className="font-semibold">x402 Integration</div>
                     <div className="text-sm text-base-content/70">Can autonomously purchase licenses</div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="bg-warning/10 border border-warning/30 p-4 rounded-lg">
-                <div className="font-bold text-warning mb-2">Example Output:</div>
-                <div className="text-sm text-base-content/80">
-                  "⚠️ HIGH PATENT RISK DETECTED<br/>
-                  Your project matches: Stablecoin Systems<br/>
-                  Risk Score: 8.5/10 (HIGH)<br/>
-                  <br/>
-                  💰 RECOMMENDATION: Purchase Brolli License<br/>
-                  Cost: $99/year | ROI: 1,010x-5,050x"
                 </div>
               </div>
             </div>
@@ -313,21 +287,18 @@ const agent = createAgent({
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-4xl mb-3">⚡</div>
               <h3 className="font-bold mb-2">Instant Settlement</h3>
               <p className="text-sm text-base-content/70">
                 2-second payment finality on Base network
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🔓</div>
               <h3 className="font-bold mb-2">HTTP 402 Protocol</h3>
               <p className="text-sm text-base-content/70">
                 Standard payment protocol for the internet
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🤖</div>
               <h3 className="font-bold mb-2">Agent-Native</h3>
               <p className="text-sm text-base-content/70">
                 Built for autonomous systems and workflows
@@ -380,18 +351,8 @@ const { voucher, signature } = await response.json();
 await mintLicense(voucher, signature);`}</code>
             </pre>
           </div>
-
-          <div className="mt-4 text-sm text-base-content/70">
-            <p>Full example script available in the GitHub repository.</p>
-          </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <p className="text-sm text-base-content/60">
-            Built for the x402 Hackathon • Powered by Coinbase Base
-          </p>
-        </div>
       </div>
     </div>
   );

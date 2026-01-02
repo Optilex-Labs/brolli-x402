@@ -105,7 +105,7 @@ export default function AgentDocsPage() {
           </div>
 
           <div className="bg-info/10 border border-info/30 p-4 rounded-lg">
-            <div className="font-bold mb-2">💡 Agent Decision Logic:</div>
+            <div className="font-bold mb-2">Agent Decision Logic:</div>
             <pre className="text-sm overflow-x-auto whitespace-pre-wrap"><code>{`// Example: Agent uses risk score to make purchase decision
 const assessment = await fetch('/api/risk/assess', {...});
 const { riskScore, recommendation } = await assessment.json();
@@ -259,8 +259,8 @@ console.log('Expires:', new Date(Number(expiry) * 1000));`}</code></pre>
             href="/agents/purchase"
             className="btn btn-lg"
             style={{
-              backgroundColor: '#F97316',
-              borderColor: '#F97316',
+              backgroundColor: '#A855F7',
+              borderColor: '#A855F7',
               color: 'white'
             }}
           >

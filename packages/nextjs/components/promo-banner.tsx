@@ -20,7 +20,7 @@ export function PromoBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
+    <div className="sticky top-0 z-50 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex-1 text-center">
           <span className="font-bold text-lg">

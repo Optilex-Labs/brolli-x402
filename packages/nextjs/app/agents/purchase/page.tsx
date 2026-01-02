@@ -68,7 +68,6 @@ export default function AgentPurchasePage() {
     return (
       <div className="min-h-screen flex items-center justify-center p-5">
         <div className="max-w-md w-full bg-base-100 p-8 rounded-2xl border border-primary shadow-xl text-center">
-          <div className="text-6xl mb-4">✅</div>
           <h2 className="text-2xl font-bold mb-4">Voucher Received!</h2>
           <p className="mb-4">License voucher generated for {beneficiary}</p>
           <p className="text-sm text-base-content/70">Redirecting...</p>
@@ -127,8 +126,8 @@ export default function AgentPurchasePage() {
             disabled={isSubmitting || !beneficiary.trim()}
             className="btn w-full text-lg"
             style={{
-              backgroundColor: '#F97316',
-              borderColor: '#F97316',
+              backgroundColor: '#A855F7',
+              borderColor: '#A855F7',
               color: 'white',
               opacity: (isSubmitting || !beneficiary.trim()) ? 0.5 : 1
             }}

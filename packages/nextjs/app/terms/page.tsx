@@ -31,7 +31,40 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              2. Term, Renewal, and Non-Transferability
+              2. Optilex Membership and Early Access Rights
+            </h2>
+            <p>
+              The first fifty (50) Brolli NFT purchases include founding memberships in Optilex Litigation Finance Infrastructure, 
+              a platform under development for capital pooling, claims distribution, and multi-party risk management.
+            </p>
+            <p className="mt-3">
+              <strong>Membership Benefits:</strong> Founding Members receive: (i) a patent license as described in Section 1, 
+              and (ii) priority access and participation rights in future Optilex litigation finance pools, subject to separate 
+              agreements, compliance requirements, and platform availability.
+            </p>
+            <p className="mt-3">
+              <strong>Not a Security or Investment Contract:</strong> This Founding Membership grants you a <em>right</em> to 
+              participate in future pools (an option), not an automatic investment, profit share, or security. Future pool 
+              participation will require separate opt-in, compliance verification, and execution of definitive agreements. 
+              No representations are made regarding the timing, structure, returns, or availability of such pools.
+            </p>
+            <p className="mt-3">
+              <strong>Platform Development:</strong> The Optilex infrastructure is under active development. Licensor makes 
+              no guarantees regarding launch dates, feature availability, regulatory approval, or ongoing operation of the 
+              platform. Founding Members acknowledge this is early-stage access to emerging infrastructure.
+            </p>
+            <p className="mt-3">
+              <strong>Wallet Association:</strong> Founding Membership status is associated with the wallet holding the 
+              Brolli NFT. These rights are non-transferable and terminate if the license expires or is revoked.
+            </p>
+            <p className="mt-3">
+              <strong>Limited Time Offering:</strong> This founding membership opportunity ends January 9, 2026.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-3 text-secondary">
+              3. Term, Renewal, and Non-Transferability
             </h2>
             <p>
               The Brolli NFT is designed to be non-transferable (soulbound). The license is associated with the wallet that
@@ -42,7 +75,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              3. Payments (x402 / USDC on Base)
+              4. Payments (x402 / USDC on Base)
             </h2>
             <p>
               Access to purchase/renewal may be gated using the x402 (HTTP 402) protocol. Payments are intended to be made in
@@ -57,7 +90,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              4. Provenance Package Controls
+              5. Provenance Package Controls
             </h2>
             <p>
               The provenance package referenced in the NFT metadata (for example, an IPFS-hosted document bundle) describes
@@ -69,7 +102,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              5. Assignment
+              6. Assignment
             </h2>
             <p>
               Licensor may assign the subject patent and/or this agreement to an affiliated or successor entity without licensee consent.
@@ -78,7 +111,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              6. No Warranties / No Legal Advice
+              7. No Warranties / No Legal Advice
             </h2>
             <p>
               The Service is provided \"as-is\" and \"as available.\" Nothing in the Service or NFT metadata constitutes legal,
@@ -88,7 +121,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              7. Risks and Blockchain Transparency
+              8. Risks and Blockchain Transparency
             </h2>
             <p>
               Wallet addresses and on-chain activity are publicly visible. You are responsible for wallet security, private-key
@@ -98,7 +131,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              8. Limitations of Liability
+              9. Limitations of Liability
             </h2>
             <p>
               To the maximum extent permitted by law, we are not liable for any indirect, incidental, special, consequential,
@@ -109,7 +142,7 @@ const TermsOfService: React.FC = () => {
 
           <section>
             <h2 className="text-xl font-semibold mb-3 text-secondary">
-              9. Governing Law and Venue
+              10. Governing Law and Venue
             </h2>
             <p>
               These Terms are governed by the laws of <strong>[Insert Jurisdiction]</strong>, without regard to conflict-of-law

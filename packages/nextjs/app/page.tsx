@@ -153,7 +153,7 @@ const BrolliLicensePage: NextPage = () => {
     <>
     <PromoBanner />
     {/* Hero Section with Video Background and Logo Overlay */}
-    <div className="relative h-[110vh] w-full overflow-hidden">
+    <div className="relative h-[55vh] w-full overflow-hidden">
       {/* Background Video */}
       <video 
         autoPlay 
@@ -167,7 +167,7 @@ const BrolliLicensePage: NextPage = () => {
       </video>
       
       {/* Dark Overlay for better text readability */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40" />
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-75" />
       
       {/* Logo Overlay */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
@@ -175,12 +175,12 @@ const BrolliLicensePage: NextPage = () => {
                       <Image
               src="/hero.png"
               alt="Brolli for BUIDLers"
-              width={1200}
-              height={1200}
+              width={600}
+              height={600}
               className="mx-auto drop-shadow-2xl"
             />
 
-            <p className="text-xl md:text-2xl text-white font-medium mt-6 mb-8 drop-shadow-lg">
+            <p className="text-lg md:text-xl text-white font-medium mt-4 mb-6 drop-shadow-lg">
               Tokenized IP protection for fintech innovators
             </p>
 
@@ -189,8 +189,8 @@ const BrolliLicensePage: NextPage = () => {
               onClick={handleMint}
               className="btn px-8 py-3 text-lg font-semibold"
               style={{
-                backgroundColor: '#F97316',
-                borderColor: '#F97316',
+                backgroundColor: '#A855F7',
+                borderColor: '#A855F7',
                 color: 'white'
               }}
               disabled={isSubmitting || Boolean(hasExistingLicense)}
@@ -201,31 +201,25 @@ const BrolliLicensePage: NextPage = () => {
                   ? "You already own Brolli"
                   : !connectedAddress
                     ? "Connect Wallet to Purchase"
-                    : "Purchase License - $99"
+                    : "Get Brolli - $99"
               }
             </button>
-            {!hasExistingLicense && (
-              <p className="mt-3 text-sm text-white/90 font-medium">
-                Limited time: 50 seats available
-              </p>
-            )}
         </div>
       </div>
     </div>
 
     {/* Promotional Details Section */}
-    <div className="bg-gradient-to-r from-orange-500 to-pink-500 py-12 px-5">
+    <div className="bg-gradient-to-r from-purple-500 to-pink-500 py-12 px-5">
       <div className="max-w-4xl mx-auto text-center text-white">
         <h2 className="text-4xl font-bold mb-6">Holiday Hacker Special</h2>
         <div className="grid md:grid-cols-2 gap-8 mb-6 max-w-2xl mx-auto">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
             <div className="mb-2">
-              <span className="text-3xl font-bold line-through opacity-70">$199</span>
-              <span className="text-5xl font-bold ml-3">$99</span>
+              <span className="text-5xl font-bold">$99</span>
             </div>
-            <div className="text-xl mb-2">Holiday Special</div>
-            <div className="text-sm opacity-90">50% OFF • Ends Jan 9, 2026</div>
-            <div className="text-xs opacity-75 mt-2">Regular price: $199 (starting Jan 10)</div>
+            <div className="text-xl mb-2">Hacker Special</div>
+            <div className="text-sm opacity-90">Ends Jan 9, 2026</div>
+            <div className="text-xs opacity-75 mt-2">Early Access to Optilex Litigation Finance Infrastructure</div>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
             <div className="text-5xl font-bold mb-2">50</div>
@@ -252,8 +246,8 @@ const BrolliLicensePage: NextPage = () => {
       href="/details" 
       className="btn btn-lg"
       style={{
-        backgroundColor: '#F97316',
-        borderColor: '#F97316',
+        backgroundColor: '#A855F7',
+        borderColor: '#A855F7',
         color: 'white'
       }}
     >
@@ -264,10 +258,10 @@ const BrolliLicensePage: NextPage = () => {
       onClick={handleMint} 
       className="text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
       style={{
-        backgroundColor: '#F97316',
+        backgroundColor: '#A855F7',
       }}
-      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#EA580C'}
-      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F97316'}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9333EA'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#A855F7'}
       disabled={isSubmitting || Boolean(hasExistingLicense)}
     >
       {isSubmitting 
@@ -276,7 +270,7 @@ const BrolliLicensePage: NextPage = () => {
           ? "License active"
           : !connectedAddress
             ? "Connect Wallet to Purchase"
-            : "Purchase License - $99"
+            : "Get Brolli - $99"
       }
     </button>
     
@@ -315,7 +309,7 @@ const BrolliLicensePage: NextPage = () => {
             <div className="text-xs text-base-content/50 mt-1">Banks & Tech Giants</div>
           </div>
           <div className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-300 text-center">
-            <div className="text-4xl font-bold text-accent mb-2">⚠️ </div>
+            <div className="text-4xl font-bold text-accent mb-2">!</div>
             <div className="text-sm text-base-content/70 uppercase tracking-wide">Waiting to Strike</div>
             <div className="text-xs text-base-content/50 mt-1">Patent Trolls Target Success</div>
           </div>
@@ -335,7 +329,7 @@ const BrolliLicensePage: NextPage = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="text-orange-500 text-xl mt-1 font-bold">•</div>
+                <div className="text-purple-500 text-xl mt-1 font-bold">•</div>
                 <div>
                   <h4 className="font-semibold text-lg mb-1">Enterprise Dominance</h4>
                   <p className="text-base-content/70">Banks, consultancies, and tech giants hold most blockchain patents.</p>
@@ -426,8 +420,8 @@ const BrolliLicensePage: NextPage = () => {
             onClick={handleMint}
             className="btn px-8 py-3 text-lg font-semibold"
             style={{
-              backgroundColor: '#F97316',
-              borderColor: '#F97316',
+              backgroundColor: '#A855F7',
+              borderColor: '#A855F7',
               color: 'white'
             }}
             disabled={isSubmitting || Boolean(hasExistingLicense)}
@@ -438,7 +432,7 @@ const BrolliLicensePage: NextPage = () => {
                 ? "You already own Brolli"
                 : !connectedAddress
                   ? "Connect Wallet to Purchase"
-                  : "Purchase License - $99"
+                  : "Get Brolli - $99"
             }
           </button>
         </div>
@@ -456,7 +450,7 @@ const BrolliLicensePage: NextPage = () => {
             {loading ? (
               <p className="my-2 font-medium">Loading...</p>
             ) : !yourLicenses?.length ? (
-                <p className="my-2 font-medium">Mint Your Brolli NFT</p>
+                <p className="my-2 font-medium">Brolli for BUIDLers</p>
             ) : (
               <div>
                   <h3 className="text-2xl font-bold mb-6 text-secondary">My Brolli</h3>
@@ -508,7 +502,7 @@ const BrolliLicensePage: NextPage = () => {
       {showTermsModal && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
           <div className="bg-base-100 rounded-2xl p-8 max-w-md w-full shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4">Purchase License - $1 USDC</h3>
+            <h3 className="text-2xl font-bold mb-4">Get Brolli - $1 USDC</h3>
 
             {/* Terms Acceptance */}
             <div className="mb-6">
@@ -517,15 +511,15 @@ const BrolliLicensePage: NextPage = () => {
                   type="checkbox"
                   checked={acceptedTerms}
                   onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-1 w-5 h-5 rounded accent-[#F97316]"
+                  className="mt-1 w-5 h-5 rounded accent-[#A855F7]"
                 />
                 <span className="text-sm">
                   I accept the{" "}
-                  <Link href="/terms" className="underline text-[#F97316]" target="_blank">
+                  <Link href="/terms" className="underline text-[#A855F7]" target="_blank">
                     Terms & Conditions
                   </Link>
                   {" "}and{" "}
-                  <Link href="/privacy-policy" className="underline text-[#F97316]" target="_blank">
+                  <Link href="/privacy-policy" className="underline text-[#A855F7]" target="_blank">
                     Privacy Policy
                   </Link>
                 </span>
@@ -538,13 +532,13 @@ const BrolliLicensePage: NextPage = () => {
                 disabled={!acceptedTerms || isSubmitting}
                 className="btn w-full"
                 style={{
-                  backgroundColor: '#F97316',
-                  borderColor: '#F97316',
+                  backgroundColor: '#A855F7',
+                  borderColor: '#A855F7',
                   color: 'white',
                   opacity: (!acceptedTerms || isSubmitting) ? 0.5 : 1
                 }}
               >
-                {isSubmitting ? "Processing..." : "Purchase License"}
+                {isSubmitting ? "Processing..." : "Get Brolli"}
               </button>
 
               <button

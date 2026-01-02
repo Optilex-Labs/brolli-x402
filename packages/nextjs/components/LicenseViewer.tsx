@@ -62,7 +62,7 @@ export const LicenseViewer = ({ className = "" }: LicenseViewerProps) => {
             <ul className="space-y-1">
               {LICENSE_DETAILS.coverage.map((item, index) => (
                 <li key={index} className="text-sm flex items-start">
-                  <span className="text-success mr-2">✓</span>
+                  <span className="text-success mr-2">•</span>
                   {item}
                 </li>
               ))}

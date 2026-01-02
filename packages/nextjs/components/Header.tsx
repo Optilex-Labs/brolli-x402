@@ -43,20 +43,20 @@ export const HeaderMenuLinks = () => {
               passHref
               className={`py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col shadow-md hover:shadow-lg transition-all duration-200`}
               style={{
-                backgroundColor: isActive ? 'transparent' : '#F97316',
-                borderColor: '#F97316',
-                border: '1px solid #F97316',
-                color: isActive ? '#F97316' : 'white'
+                backgroundColor: isActive ? 'transparent' : '#A855F7',
+                borderColor: '#A855F7',
+                border: '1px solid #A855F7',
+                color: isActive ? '#A855F7' : 'white'
               }}
               onMouseEnter={(e) => {
                 if (!isActive) {
                   e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#F97316';
+                  e.currentTarget.style.color = '#A855F7';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isActive) {
-                  e.currentTarget.style.backgroundColor = '#F97316';
+                  e.currentTarget.style.backgroundColor = '#A855F7';
                   e.currentTarget.style.color = 'white';
                 }
               }}

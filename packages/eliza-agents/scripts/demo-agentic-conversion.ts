@@ -53,21 +53,10 @@ async function demoAgenticConversion() {
   await sleep(2500);
   
   console.log('\n🤖 DECISION: PURCHASE LICENSE IMMEDIATELY');
-  await sleep(2000);
+  await sleep(2500);
   
   console.log('\n💳 Initiating x402 payment to Brolli...');
-  await sleep(1500);
-  
-  console.log('✅ Payment proof prepared');
-  await sleep(1000);
-  console.log('✅ Sending USDC to resource wallet...');
-  await sleep(1500);
-  
-  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-  await sleep(1000);
-  
-  console.log('🎯 Agent autonomously assessed risk and initiated purchase');
-  console.log('📹 Continue to x402 payment demo...\n');
+  await sleep(2000);
 }
 
 // Run the demo
