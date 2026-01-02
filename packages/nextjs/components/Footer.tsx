@@ -12,7 +12,7 @@ export const Footer = () => {
         <span>© Optilex, LLC</span>
         <span>·</span>
         <a href="https://x.com/OptilexAI" target="_blank" rel="noopener noreferrer" className="link">
-          Twitter
+          X
         </a>
         <span>·</span>
         <a href="https://github.com/Optilex-Labs/brolli-x402" target="_blank" rel="noopener noreferrer" className="link">

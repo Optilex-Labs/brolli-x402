@@ -170,7 +170,7 @@ const BrolliLicensePage: NextPage = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-75" />
       
       {/* Logo Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pb-12">
         <div className="text-center z-10">
                       <Image
               src="/hero.png"
@@ -187,7 +187,7 @@ const BrolliLicensePage: NextPage = () => {
             {/* CTA Button */}
             <button
               onClick={handleMint}
-              className="btn px-8 py-3 text-lg font-semibold"
+              className="btn px-8 py-3 text-lg font-semibold mb-8"
               style={{
                 backgroundColor: '#4f46e5',
                 borderColor: '#4f46e5',
