@@ -28,7 +28,6 @@ const initialState: LicenseFormState = {
 };
 
 const RESOURCE_WALLET = "0xbDa36A47a41Fe693CC55316f58146dA556FDEFf3";
-const REQUIRED_USDC_AMOUNT = BigInt("99000000"); // $99 USDC (6 decimals)
 
 const BrolliLicensePage: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -54,6 +53,11 @@ const BrolliLicensePage: NextPage = () => {
     functionName: "hasLicense",
     args: connectedAddress ? [connectedAddress] : undefined,
     enabled: Boolean(connectedAddress),
+  } as any);
+
+  const { data: mintPrice } = useScaffoldReadContract({
+    contractName: "Brolli",
+    functionName: "mintPrice",
   } as any);
 
   const { data: contract } = useScaffoldContract({ contractName: "Brolli" });
@@ -118,11 +122,14 @@ const BrolliLicensePage: NextPage = () => {
     setIsSubmitting(true);
 
     try {
+      // Read the actual mint price from contract
+      const approvalAmount = mintPrice || BigInt("99000000"); // Fallback to $99 if not loaded
+      
       // Step 1: Approve Brolli contract to spend USDC (following Vendor.sol pattern)
-      console.log("Approving USDC for Brolli contract...");
+      console.log(`Approving ${approvalAmount.toString()} USDC for Brolli contract...`);
       await writeUsdcAsync({
         functionName: "approve",
-        args: [contract.address, REQUIRED_USDC_AMOUNT],
+        args: [contract.address, approvalAmount],
       });
 
       // Step 2: Mint NFT (contract will pull USDC payment)
