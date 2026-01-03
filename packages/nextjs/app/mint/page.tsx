@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
+import { useAccount, usePublicClient } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth/networks";
 import { BrolliChatWidget } from "~~/components/brolli-chat/brolli-chat-widget";
@@ -33,6 +33,7 @@ const BrolliLicensePage: NextPage = () => {
   const { address: connectedAddress } = useAccount();
   const router = useRouter();
   const { targetNetwork } = useTargetNetwork();
+  const publicClient = usePublicClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState<LicenseFormState>(initialState);
 
@@ -127,10 +128,17 @@ const BrolliLicensePage: NextPage = () => {
       
       // Step 1: Approve Brolli contract to spend USDC (following Vendor.sol pattern)
       console.log(`Approving ${approvalAmount.toString()} USDC for Brolli contract...`);
-      await writeUsdcAsync({
+      const approvalTxHash = await writeUsdcAsync({
         functionName: "approve",
         args: [contract.address, approvalAmount],
       });
+      
+      // Wait for approval transaction to be confirmed
+      if (approvalTxHash && publicClient) {
+        console.log("Waiting for approval confirmation...");
+        await publicClient.waitForTransactionReceipt({ hash: approvalTxHash });
+        console.log("Approval confirmed!");
+      }
 
       // Step 2: Mint NFT (contract will pull USDC payment)
       console.log("Minting NFT...");
