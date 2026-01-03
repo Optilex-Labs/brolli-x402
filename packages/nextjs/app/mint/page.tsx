@@ -501,7 +501,7 @@ const BrolliLicensePage: NextPage = () => {
       {showTermsModal && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
           <div className="bg-base-100 rounded-2xl p-8 max-w-md w-full shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4">Get Brolli - $1 USDC</h3>
+            <h3 className="text-2xl font-bold mb-4">Get Brolli - $99 USDC</h3>
 
             {/* Terms Acceptance */}
             <div className="mb-6">
