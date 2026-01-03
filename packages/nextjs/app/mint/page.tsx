@@ -28,7 +28,7 @@ const initialState: LicenseFormState = {
 };
 
 const RESOURCE_WALLET = "0xbDa36A47a41Fe693CC55316f58146dA556FDEFf3";
-const REQUIRED_USDC_AMOUNT = BigInt("1000000"); // $1 USDC (6 decimals)
+const REQUIRED_USDC_AMOUNT = BigInt("99000000"); // $99 USDC (6 decimals)
 
 const BrolliLicensePage: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -353,7 +353,6 @@ const BrolliLicensePage: NextPage = () => {
                 className="mx-auto mb-6 rounded-lg shadow-lg"
               />
               <div className="text-3xl font-bold mb-4 text-primary">PROTECTION</div>
-              <p className="text-lg font-semibold">Brolli Provides Cover</p>
               <p className="text-sm text-base-content/60">Collective protection for the ecosystem</p>
             </div>
           </div>
